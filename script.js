@@ -20,9 +20,80 @@ class DashboardController {
         await this.loadData();
         this.setupEventListeners();
         this.populateFilters();
-        this.showInitialMessage();
+        
+        // Aguardar um momento para os selects serem populados completamente
+        setTimeout(() => {
+            // Definir seleção padrão após popular os filtros
+            this.setDefaultFilters();
+        }, 100);
+        
         // Iniciar verificação automática de atualizações
         this.startAutoReload();
+    }
+
+    // Definir filtros padrão para exibição inicial
+    setDefaultFilters() {
+        // Valores padrão que serão selecionados automaticamente
+        const defaultValues = {
+            avaliacao: 'Avaliação Contínua da Aprendizagem - Ciclo III / 2025',
+            anoEscolar: '6º ano do Ensino Fundamental', 
+            componente: 'Língua Portuguesa (Leitura)',
+            rede: 'Pública',
+            escola: 'geral' // Média Geral
+        };
+
+        console.log('🎯 Aplicando filtros padrão:', defaultValues);
+
+        // Aplicar os valores padrão aos selects
+        let filtersApplied = 0;
+        Object.keys(defaultValues).forEach(filterKey => {
+            const selectId = this.getSelectId(filterKey);
+            const selectElement = document.getElementById(selectId);
+            
+            if (selectElement) {
+                console.log(`🔍 Verificando filtro ${filterKey}:`, {
+                    selectId,
+                    valorEsperado: defaultValues[filterKey],
+                    opcoesDisponiveis: Array.from(selectElement.options).map(opt => opt.value)
+                });
+                
+                // Verificar se a opção existe no select
+                const optionExists = Array.from(selectElement.options).some(
+                    option => option.value === defaultValues[filterKey]
+                );
+                
+                if (optionExists) {
+                    selectElement.value = defaultValues[filterKey];
+                    this.currentFilters[filterKey] = defaultValues[filterKey];
+                    
+                    // Adicionar classe visual para indicar seleção ativa
+                    selectElement.classList.add('filter-selected');
+                    
+                    filtersApplied++;
+                    console.log(`✅ Filtro aplicado: ${filterKey} = ${defaultValues[filterKey]}`);
+                } else {
+                    console.log(`⚠️ Valor padrão não encontrado para ${filterKey}: "${defaultValues[filterKey]}"`);
+                    console.log('Opções disponíveis:', Array.from(selectElement.options).map(opt => `"${opt.value}"`));
+                }
+            } else {
+                console.log(`❌ Elemento select não encontrado para: ${selectId}`);
+            }
+        });
+
+        console.log(`📊 Total de filtros aplicados: ${filtersApplied}/5`);
+
+        // Aplicar os filtros para mostrar os dados iniciais com um pequeno delay
+        if (filtersApplied >= 4) { // Pelo menos os 4 filtros básicos
+            setTimeout(() => {
+                console.log('🚀 Aplicando filtros e renderizando cards...');
+                this.applyFilters();
+                // Mostrar notificação de que os filtros padrão foram aplicados
+                this.showUpdateNotification('🎯 Filtros padrão aplicados: 6º ano - Língua Portuguesa', 'info');
+            }, 1000); // Aumentei para 1 segundo
+        } else {
+            console.log('❌ Não foi possível aplicar todos os filtros padrão, mostrando mensagem inicial');
+            this.showInitialMessage();
+        }
     }
 
     showInitialMessage() {
@@ -59,26 +130,31 @@ class DashboardController {
         // Event listeners para os filtros
         document.getElementById('avaliacao').addEventListener('change', (e) => {
             this.currentFilters.avaliacao = e.target.value;
+            this.updateFilterVisualState('avaliacao', e.target.value);
             this.applyFilters();
         });
 
         document.getElementById('ano-escolar').addEventListener('change', (e) => {
             this.currentFilters.anoEscolar = e.target.value;
+            this.updateFilterVisualState('anoEscolar', e.target.value);
             this.applyFilters();
         });
 
         document.getElementById('componente').addEventListener('change', (e) => {
             this.currentFilters.componente = e.target.value;
+            this.updateFilterVisualState('componente', e.target.value);
             this.applyFilters();
         });
 
         document.getElementById('rede').addEventListener('change', (e) => {
             this.currentFilters.rede = e.target.value;
+            this.updateFilterVisualState('rede', e.target.value);
             this.applyFilters();
         });
 
         document.getElementById('escola').addEventListener('change', (e) => {
             this.currentFilters.escola = e.target.value;
+            this.updateFilterVisualState('escola', e.target.value);
             this.renderCards();
         });
 
@@ -403,6 +479,20 @@ class DashboardController {
             performance: 'performance-range'
         };
         return mapping[filterKey];
+    }
+
+    // Atualizar estado visual do filtro
+    updateFilterVisualState(filterKey, value) {
+        const selectId = this.getSelectId(filterKey);
+        const selectElement = document.getElementById(selectId);
+        
+        if (selectElement) {
+            if (value && value !== '') {
+                selectElement.classList.add('filter-selected');
+            } else {
+                selectElement.classList.remove('filter-selected');
+            }
+        }
     }
 
     // Iniciar verificação automática (a cada 30 segundos)

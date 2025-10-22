@@ -163,6 +163,12 @@ body {
     border-color: #d1d5db;
 }
 
+.filter-group select.filter-selected {
+    border-color: #6366f1;
+    background-color: #f0f9ff;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
 .performance-filter {
     margin-top: 15px;
     padding-top: 15px;
