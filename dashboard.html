@@ -10,96 +10,112 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>Percentual de Acerto por Habilidade</h1>
-            <p class="subtitle">Avaliação Contínua da Aprendizagem - Ciclo III / 2025</p>
+            <div class="header-content">
+                <div class="title-section">
+                    <h1>📊 Percentual de Acerto por Habilidade</h1>
+                    <p class="subtitle">Avaliação Contínua da Aprendizagem - Ciclo III / 2025</p>
+                </div>
+                <div class="status-indicator">
+                    <div class="auto-sync-indicator" title="Sincronização automática ativada">
+                        <span class="sync-icon">🔄</span>
+                        <span class="sync-text">Auto-sync</span>
+                    </div>
+                </div>
+            </div>
         </header>
 
-        <div class="filters-section">
-            <h2>Filtros</h2>
-            <div class="filters">
-                <div class="filter-group">
-                    <label for="avaliacao">Avaliação</label>
-                    <select id="avaliacao">
-                        <option value="">Selecione uma avaliação</option>
-                    </select>
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="filters-section">
+                    <h2>🎯 Filtros</h2>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="avaliacao">📋 Avaliação</label>
+                            <select id="avaliacao">
+                                <option value="">Selecione uma avaliação</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="ano-escolar">🎓 Ano escolar</label>
+                            <select id="ano-escolar">
+                                <option value="">Selecione o ano</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="componente">📚 Componente curricular</label>
+                            <select id="componente">
+                                <option value="">Selecione o componente</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="rede">🏛️ Rede</label>
+                            <select id="rede">
+                                <option value="">Selecione a rede</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="escola">🏫 Escola</label>
+                            <select id="escola">
+                                <option value="">Selecione a escola</option>
+                                <option value="geral">📊 Média Geral</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="performance-filter">
+                        <label for="performance-range">📈 Faixa de desempenho</label>
+                        <select id="performance-range">
+                            <option value="all">Todas as faixas</option>
+                            <option value="0-40">🔴 Até 40%</option>
+                            <option value="41-60">🟠 De 41% a 60%</option>
+                            <option value="61-80">🔵 De 61% a 80%</option>
+                            <option value="81-100">🟢 Acima de 80%</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="filter-group">
-                    <label for="ano-escolar">Ano escolar</label>
-                    <select id="ano-escolar">
-                        <option value="">Selecione o ano</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
-                    <label for="componente">Componente curricular</label>
-                    <select id="componente">
-                        <option value="">Selecione o componente</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
-                    <label for="rede">Rede</label>
-                    <select id="rede">
-                        <option value="">Selecione a rede</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
-                    <label for="escola">Escola</label>
-                    <select id="escola">
-                        <option value="">Selecione a escola</option>
-                        <option value="geral">Média Geral</option>
-                    </select>
+                <div class="legend">
+                    <h3>🎨 Legenda</h3>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-color red"></div>
+                            <span>Crítico (≤40%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color orange"></div>
+                            <span>Baixo (41-60%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color light-blue"></div>
+                            <span>Intermediário (61-80%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color teal"></div>
+                            <span>Adequado (>80%)</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="performance-filter">
-                <label for="performance-range">Filtrar por faixa de desempenho:</label>
-                <select id="performance-range">
-                    <option value="all">Todas as faixas</option>
-                    <option value="0-40">Até 40%</option>
-                    <option value="41-60">De 41% a 60%</option>
-                    <option value="61-80">De 61% a 80%</option>
-                    <option value="81-100">Acima de 80%</option>
-                </select>
-            </div>
-        </div>
+            <div class="content-area">
+                <div class="cards-section">
+                    <div id="cards-container" class="cards-grid">
+                        <!-- Cards serão inseridos aqui dinamicamente -->
+                    </div>
+                    
+                    <div class="no-data" id="no-data" style="display: none;">
+                        <p>🎯 Selecione <strong>todos os filtros</strong> para visualizar as habilidades</p>
+                    </div>
 
-        <div class="legend">
-            <h3>Legenda de Cores</h3>
-            <div class="legend-items">
-                <div class="legend-item">
-                    <div class="legend-color red"></div>
-                    <span>Até 40%</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color orange"></div>
-                    <span>De 41% a 60%</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color light-blue"></div>
-                    <span>De 61% a 80%</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color teal"></div>
-                    <span>Acima de 80%</span>
+                    <div class="loading" id="loading" style="display: block;">
+                        <p>⏳ Carregando dados educacionais...</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="cards-section">
-            <div id="cards-container" class="cards-grid">
-                <!-- Cards serão inseridos aqui dinamicamente -->
-            </div>
-        </div>
-
-        <div class="no-data" id="no-data" style="display: none;">
-            <p>Selecione <strong>todos os filtros</strong> para visualizar os dados das habilidades.</p>
-        </div>
-
-        <div class="loading" id="loading" style="display: block;">
-            <p>Carregando dados...</p>
         </div>
     </div>
 

@@ -2,6 +2,8 @@ class DashboardController {
     constructor() {
         this.data = [];
         this.filteredData = null;
+        this.lastModified = null;
+        this.autoReloadInterval = null;
         this.currentFilters = {
             avaliacao: '',
             anoEscolar: '',
@@ -18,8 +20,9 @@ class DashboardController {
         await this.loadData();
         this.setupEventListeners();
         this.populateFilters();
-        // Mostrar mensagem inicial
         this.showInitialMessage();
+        // Iniciar verificação automática de atualizações
+        this.startAutoReload();
     }
 
     showInitialMessage() {
@@ -34,12 +37,21 @@ class DashboardController {
 
     async loadData() {
         try {
-            const response = await fetch('CICLO_III_2025.yaml');
+            const response = await fetch('CICLO_III_2025.yaml', {
+                cache: 'no-cache' // Evitar cache do navegador
+            });
+            
+            // Capturar o Last-Modified header para detectar mudanças
+            const newLastModified = response.headers.get('Last-Modified') || new Date().toISOString();
+            
             const yamlText = await response.text();
             this.data = jsyaml.load(yamlText);
-            console.log('Dados carregados:', this.data);
+            this.lastModified = newLastModified;
+            
+            console.log('📄 Dados carregados:', this.data);
+            console.log('⏰ Última modificação:', this.lastModified);
         } catch (error) {
-            console.error('Erro ao carregar dados:', error);
+            console.error('❌ Erro ao carregar dados:', error);
         }
     }
 
@@ -77,14 +89,21 @@ class DashboardController {
 
         // Event listener para fechar modal
         document.querySelector('.close').addEventListener('click', () => {
-            document.getElementById('modal').style.display = 'none';
+            this.closeModal();
         });
 
         // Fechar modal clicando fora
         window.addEventListener('click', (e) => {
             const modal = document.getElementById('modal');
             if (e.target === modal) {
-                modal.style.display = 'none';
+                this.closeModal();
+            }
+        });
+
+        // Fechar modal com Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeModal();
             }
         });
     }
@@ -250,46 +269,206 @@ class DashboardController {
         const description = document.getElementById('modal-description');
         const details = document.getElementById('modal-details');
 
-        title.textContent = `${habilidade.habilidade} - ${habilidade.descritor}`;
+        title.innerHTML = `📋 ${habilidade.habilidade} - <span style="color: #6366f1;">${habilidade.descritor}</span>`;
         
         const mediaGeral = parseInt(habilidade.media_geral.replace('%', ''));
         const isEscolaEspecifica = this.currentFilters.escola && 
                                    this.currentFilters.escola !== '' && 
                                    this.currentFilters.escola !== 'geral';
         
+        const performanceIcon = this.getPerformanceIcon(percentage);
         let descriptionHtml = `
-            <strong>Percentual de Acerto:</strong> ${percentage}%<br>
-            <strong>Classificação:</strong> ${this.getPerformanceLabel(percentage)}
+            ${performanceIcon} <strong>Percentual de Acerto:</strong> <span style="font-size: 1.2em; color: ${this.getPerformanceColor(percentage)};">${percentage}%</span><br>
+            📊 <strong>Classificação:</strong> ${this.getPerformanceLabel(percentage)}
         `;
         
         if (isEscolaEspecifica) {
-            descriptionHtml += `<br><strong>Escola:</strong> ${this.currentFilters.escola}`;
-            descriptionHtml += `<br><strong>Média Geral da Rede:</strong> ${mediaGeral}%`;
+            descriptionHtml += `<br>🏫 <strong>Escola:</strong> ${this.currentFilters.escola}`;
+            descriptionHtml += `<br>📈 <strong>Média Geral da Rede:</strong> ${mediaGeral}%`;
             const diferenca = percentage - mediaGeral;
             const diferencaTexto = diferenca > 0 ? `+${diferenca}%` : `${diferenca}%`;
-            descriptionHtml += `<br><strong>Diferença da Média:</strong> ${diferencaTexto}`;
+            const diferencaIcon = diferenca > 0 ? '📈' : diferenca < 0 ? '📉' : '➖';
+            descriptionHtml += `<br>${diferencaIcon} <strong>Diferença da Média:</strong> <span style="color: ${diferenca >= 0 ? '#10b981' : '#ef4444'};">${diferencaTexto}</span>`;
         }
         
         description.innerHTML = descriptionHtml;
 
         // Adicionar detalhes por escola se disponível e não estiver vendo escola específica
         if (this.filteredData.por_escola && !isEscolaEspecifica) {
-            let escolasHtml = '<h4>Desempenho por Escola:</h4><ul>';
+            let escolasHtml = '<h4>🏫 Desempenho por Escola:</h4><ul>';
             this.filteredData.por_escola.forEach(escola => {
                 const escolaPercentual = escola.habilidades[habilidade.habilidade];
                 if (escolaPercentual) {
-                    escolasHtml += `<li><strong>${escola.escola}:</strong> ${escolaPercentual}</li>`;
+                    const escPerc = parseInt(escolaPercentual.replace('%', ''));
+                    const escIcon = this.getPerformanceIcon(escPerc);
+                    escolasHtml += `<li><span>${escola.escola}</span><span>${escIcon} ${escolaPercentual}</span></li>`;
                 }
             });
             escolasHtml += '</ul>';
             details.innerHTML = escolasHtml;
         } else if (isEscolaEspecifica) {
-            details.innerHTML = '<p><em>Dados específicos desta escola em relação à rede.</em></p>';
+            details.innerHTML = '<p><em>💡 Dados específicos desta escola em relação à rede educacional.</em></p>';
         } else {
-            details.innerHTML = '<p>Informações detalhadas não disponíveis.</p>';
+            details.innerHTML = '<p>ℹ️ Informações detalhadas não disponíveis.</p>';
         }
 
         modal.style.display = 'flex';
+        // Trigger animation
+        setTimeout(() => modal.classList.add('show'), 10);
+    }
+
+    getPerformanceIcon(percentage) {
+        if (percentage <= 40) return '🔴';
+        if (percentage <= 60) return '🟠';
+        if (percentage <= 80) return '🔵';
+        return '🟢';
+    }
+
+    getPerformanceColor(percentage) {
+        if (percentage <= 40) return '#ef4444';
+        if (percentage <= 60) return '#f59e0b';
+        if (percentage <= 80) return '#3b82f6';
+        return '#10b981';
+    }
+
+    // Função para verificar se houve mudanças no arquivo
+    async checkForUpdates() {
+        try {
+            const response = await fetch('CICLO_III_2025.yaml', {
+                method: 'HEAD', // Apenas headers, sem baixar o conteúdo
+                cache: 'no-cache'
+            });
+            
+            const newLastModified = response.headers.get('Last-Modified') || new Date().toISOString();
+            
+            if (this.lastModified && newLastModified !== this.lastModified) {
+                console.log('🔄 Arquivo YAML foi atualizado, recarregando dados...');
+                this.showUpdateNotification('🔄 Dados atualizados automaticamente!');
+                await this.reloadData();
+            }
+            
+        } catch (error) {
+            console.warn('⚠️ Não foi possível verificar atualizações:', error);
+        }
+    }
+
+    // Função para recarregar dados mantendo filtros atuais
+    async reloadData() {
+        const previousFilters = { ...this.currentFilters };
+        
+        try {
+            await this.loadData();
+            this.populateFilters();
+            
+            // Restaurar filtros anteriores se ainda existirem
+            this.restoreFilters(previousFilters);
+            this.applyFilters();
+            
+        } catch (error) {
+            console.error('❌ Erro ao recarregar dados:', error);
+            this.showUpdateNotification('❌ Erro ao atualizar dados', 'error');
+        }
+    }
+
+    // Restaurar filtros após reload
+    restoreFilters(previousFilters) {
+        Object.keys(previousFilters).forEach(filterKey => {
+            const selectElement = document.getElementById(this.getSelectId(filterKey));
+            if (selectElement && previousFilters[filterKey]) {
+                // Verificar se a opção ainda existe
+                const optionExists = Array.from(selectElement.options).some(
+                    option => option.value === previousFilters[filterKey]
+                );
+                
+                if (optionExists) {
+                    selectElement.value = previousFilters[filterKey];
+                    this.currentFilters[filterKey] = previousFilters[filterKey];
+                } else {
+                    // Se a opção não existe mais, resetar o filtro
+                    selectElement.value = '';
+                    this.currentFilters[filterKey] = '';
+                }
+            }
+        });
+    }
+
+    // Helper para mapear nomes de filtros para IDs dos selects
+    getSelectId(filterKey) {
+        const mapping = {
+            avaliacao: 'avaliacao',
+            anoEscolar: 'ano-escolar',
+            componente: 'componente',
+            rede: 'rede',
+            escola: 'escola',
+            performance: 'performance-range'
+        };
+        return mapping[filterKey];
+    }
+
+    // Iniciar verificação automática (a cada 30 segundos)
+    startAutoReload() {
+        if (this.autoReloadInterval) {
+            clearInterval(this.autoReloadInterval);
+        }
+        
+        this.autoReloadInterval = setInterval(() => {
+            this.checkForUpdates();
+        }, 30000); // 30 segundos
+        
+        console.log('🔄 Auto-reload ativado (verificação a cada 30 segundos)');
+        this.showUpdateNotification('🔄 Atualização automática ativada', 'info');
+    }
+
+    // Parar verificação automática
+    stopAutoReload() {
+        if (this.autoReloadInterval) {
+            clearInterval(this.autoReloadInterval);
+            this.autoReloadInterval = null;
+            console.log('⏹️ Auto-reload desativado');
+        }
+    }
+
+    // Mostrar notificações de atualização
+    showUpdateNotification(message, type = 'success') {
+        // Remover notificação existente se houver
+        const existingNotification = document.querySelector('.update-notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+
+        const notification = document.createElement('div');
+        notification.className = `update-notification ${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <span>${message}</span>
+                <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
+            </div>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Mostrar com animação
+        setTimeout(() => notification.classList.add('show'), 100);
+        
+        // Auto-remover após 4 segundos
+        setTimeout(() => {
+            if (notification.parentElement) {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.remove();
+                    }
+                }, 300);
+            }
+        }, 4000);
+    }
+
+    closeModal() {
+        const modal = document.getElementById('modal');
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
     }
 
     getPerformanceLabel(percentage) {
