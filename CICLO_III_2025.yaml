@@ -1,0 +1,1375 @@
+- filtros:
+    avaliacao: Avaliação Contínua da Aprendizagem - Ciclo III / 2025
+    ano_escolar: 6º ano do Ensino Fundamental
+    componente_curricular: Língua Portuguesa (Leitura)
+    rede: Pública
+  habilidades_descritores:
+  - habilidade: H01
+    descritor: 2EF08_P
+    media_geral: 91%
+  - habilidade: H02
+    descritor: 4EF12_P
+    media_geral: 93%
+  - habilidade: H03
+    descritor: 4EF19_P
+    media_geral: 98%
+  - habilidade: H04
+    descritor: 5EF04_P
+    media_geral: 94%
+  - habilidade: H05
+    descritor: 6EF02_P
+    media_geral: 93%
+  - habilidade: H06
+    descritor: 6EF04_P
+    media_geral: 96%
+  - habilidade: H07
+    descritor: 6EF06_P
+    media_geral: 94%
+  - habilidade: H08
+    descritor: 6EF08_P
+    media_geral: 94%
+  - habilidade: H09
+    descritor: 6EF10_P
+    media_geral: 96%
+  - habilidade: H10
+    descritor: 6EF12_P
+    media_geral: 91%
+  - habilidade: H11
+    descritor: 6EF14_P
+    media_geral: 92%
+  - habilidade: H12
+    descritor: 6EF16_P
+    media_geral: 89%
+  - habilidade: H13
+    descritor: 6EF17_P
+    media_geral: 95%
+  - habilidade: H14
+    descritor: 6EF19_P
+    media_geral: 93%
+  - habilidade: H15
+    descritor: 6EF21_P
+    media_geral: 93%
+  - habilidade: H16
+    descritor: 6EF22_P
+    media_geral: 96%
+  por_escola:
+  - escola: EEF 21 DE DEZEMBRO - 23084707
+    habilidades:
+      H01: 97%
+      H02: 93%
+      H03: 100%
+      H04: 97%
+      H05: 95%
+      H06: 97%
+      H07: 90%
+      H08: 98%
+      H09: 90%
+      H10: 93%
+      H11: 86%
+      H12: 90%
+      H13: 93%
+      H14: 91%
+      H15: 97%
+      H16: 95%
+  - escola: EEF FIRMINO JOSE - 23084766
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 100%
+      H08: 100%
+      H09: 100%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 100%
+      H16: 100%
+  - escola: EEF FRANCISCO MOURAO LIMA - 23177071
+    habilidades:
+      H01: 81%
+      H02: 93%
+      H03: 94%
+      H04: 85%
+      H05: 98%
+      H06: 94%
+      H07: 94%
+      H08: 94%
+      H09: 96%
+      H10: 90%
+      H11: 87%
+      H12: 79%
+      H13: 96%
+      H14: 91%
+      H15: 85%
+      H16: 96%
+  - escola: EEIEF 03 DE DEZEMBRO - 23084715
+    habilidades:
+      H01: 100%
+      H02: 92%
+      H03: 100%
+      H04: 100%
+      H05: 92%
+      H06: 100%
+      H07: 100%
+      H08: 100%
+      H09: 100%
+      H10: 100%
+      H11: 92%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 83%
+      H16: 100%
+  - escola: EEIEF ANTONIO DE SOUSA BARROS - 23084685
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 98%
+      H08: 98%
+      H09: 96%
+      H10: 98%
+      H11: 96%
+      H12: 100%
+      H13: 100%
+      H14: 94%
+      H15: 100%
+      H16: 98%
+  - escola: EEIEF JOSE ALVES DE SENA - 23084952
+    habilidades:
+      H01: 89%
+      H02: 85%
+      H03: 100%
+      H04: 96%
+      H05: 74%
+      H06: 93%
+      H07: 89%
+      H08: 81%
+      H09: 100%
+      H10: 78%
+      H11: 100%
+      H12: 89%
+      H13: 87%
+      H14: 89%
+      H15: 96%
+      H16: 94%
+- filtros:
+    avaliacao: Avaliação Contínua da Aprendizagem - Ciclo III / 2025
+    ano_escolar: 7º ano do Ensino Fundamental
+    componente_curricular: Língua Portuguesa (Leitura)
+    rede: Pública
+  habilidades_descritores:
+  - habilidade: H01
+    descritor: 5EF05_P
+    media_geral: 97%
+  - habilidade: H02
+    descritor: 5EF11_P
+    media_geral: 96%
+  - habilidade: H03
+    descritor: 5EF14_P
+    media_geral: 93%
+  - habilidade: H04
+    descritor: 5EF15_P
+    media_geral: 92%
+  - habilidade: H05
+    descritor: 5EF16_P
+    media_geral: 96%
+  - habilidade: H06
+    descritor: 7EF04_P
+    media_geral: 97%
+  - habilidade: H07
+    descritor: 7EF06_P
+    media_geral: 44%
+  - habilidade: H08
+    descritor: 7EF08_P
+    media_geral: 94%
+  - habilidade: H09
+    descritor: 7EF10_P
+    media_geral: 93%
+  - habilidade: H10
+    descritor: 7EF12_P
+    media_geral: 93%
+  - habilidade: H11
+    descritor: 7EF14_P
+    media_geral: 89%
+  - habilidade: H12
+    descritor: 7EF16_P
+    media_geral: 95%
+  - habilidade: H13
+    descritor: 7EF17_P
+    media_geral: 96%
+  - habilidade: H14
+    descritor: 7EF19_P
+    media_geral: 95%
+  - habilidade: H15
+    descritor: 7EF21_P
+    media_geral: 96%
+  - habilidade: H16
+    descritor: 7EF23_P
+    media_geral: 97%
+  - habilidade: H17
+    descritor: 7EF24_P
+    media_geral: 95%
+  por_escola:
+  - escola: EEF 21 DE DEZEMBRO - 23084707
+    habilidades:
+      H01: 99%
+      H02: 95%
+      H03: 94%
+      H04: 92%
+      H05: 97%
+      H06: 97%
+      H07: 40%
+      H08: 96%
+      H09: 98%
+      H10: 87%
+      H11: 85%
+      H12: 97%
+      H13: 97%
+      H14: 97%
+      H15: 97%
+      H16: 99%
+      H17: 95%
+  - escola: EEF FIRMINO JOSE - 23084766
+    habilidades:
+      H01: 93%
+      H02: 96%
+      H03: 89%
+      H04: 89%
+      H05: 93%
+      H06: 96%
+      H07: 46%
+      H08: 93%
+      H09: 93%
+      H10: 96%
+      H11: 89%
+      H12: 91%
+      H13: 94%
+      H14: 91%
+      H15: 89%
+      H16: 89%
+      H17: 89%
+  - escola: EEIEF 03 DE DEZEMBRO - 23084715
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 50%
+      H08: 100%
+      H09: 100%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 100%
+      H16: 100%
+      H17: 100%
+  - escola: EEIEF ANTONIO DE SOUSA BARROS - 23084685
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 92%
+      H06: 100%
+      H07: 50%
+      H08: 100%
+      H09: 92%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 92%
+      H15: 100%
+      H16: 100%
+      H17: 100%
+  - escola: EEIEF JOSE ALVES DE SENA - 23084952
+    habilidades:
+      H01: 97%
+      H02: 94%
+      H03: 92%
+      H04: 89%
+      H05: 97%
+      H06: 94%
+      H07: 49%
+      H08: 90%
+      H09: 83%
+      H10: 100%
+      H11: 94%
+      H12: 93%
+      H13: 93%
+      H14: 96%
+      H15: 97%
+      H16: 97%
+      H17: 97%
+- filtros:
+    avaliacao: Avaliação Contínua da Aprendizagem - Ciclo III / 2025
+    ano_escolar: 8º ano do Ensino Fundamental
+    componente_curricular: Língua Portuguesa (Leitura)
+    rede: Pública
+  habilidades_descritores:
+  - habilidade: H01
+    descritor: 5EF05_P
+    media_geral: 98%
+  - habilidade: H02
+    descritor: 5EF11_P
+    media_geral: 90%
+  - habilidade: H03
+    descritor: 5EF14_P
+    media_geral: 94%
+  - habilidade: H04
+    descritor: 5EF15_P
+    media_geral: 89%
+  - habilidade: H05
+    descritor: 5EF16_P
+    media_geral: 96%
+  - habilidade: H06
+    descritor: 8EF01_P
+    media_geral: 97%
+  - habilidade: H07
+    descritor: 8EF03_P
+    media_geral: 95%
+  - habilidade: H08
+    descritor: 8EF05_P
+    media_geral: 98%
+  - habilidade: H09
+    descritor: 8EF07_P
+    media_geral: 92%
+  - habilidade: H10
+    descritor: 8EF09_P
+    media_geral: 98%
+  - habilidade: H11
+    descritor: 8EF11_P
+    media_geral: 94%
+  - habilidade: H12
+    descritor: 8EF13_P
+    media_geral: 99%
+  - habilidade: H13
+    descritor: 8EF15_P
+    media_geral: 94%
+  - habilidade: H14
+    descritor: 8EF18_P
+    media_geral: 97%
+  - habilidade: H15
+    descritor: 8EF20_P
+    media_geral: 47%
+  - habilidade: H16
+    descritor: 8EF21_P
+    media_geral: 51%
+  - habilidade: H17
+    descritor: 8EF23_P
+    media_geral: 99%
+  - habilidade: H18
+    descritor: 8EF25_P
+    media_geral: 97%
+  por_escola:
+  - escola: EEF 21 DE DEZEMBRO - 23084707
+    habilidades:
+      H01: 100%
+      H02: 85%
+      H03: 89%
+      H04: 85%
+      H05: 96%
+      H06: 98%
+      H07: 91%
+      H08: 98%
+      H09: 87%
+      H10: 100%
+      H11: 90%
+      H12: 100%
+      H13: 92%
+      H14: 96%
+      H15: 46%
+      H16: 51%
+      H17: 99%
+      H18: 96%
+  - escola: EEF FIRMINO JOSE - 23084766
+    habilidades:
+      H01: 97%
+      H02: 100%
+      H03: 97%
+      H04: 100%
+      H05: 97%
+      H06: 100%
+      H07: 100%
+      H08: 100%
+      H09: 99%
+      H10: 97%
+      H11: 97%
+      H12: 100%
+      H13: 99%
+      H14: 100%
+      H15: 49%
+      H16: 49%
+      H17: 97%
+      H18: 97%
+  - escola: EEIEF 03 DE DEZEMBRO - 23084715
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 100%
+      H08: 100%
+      H09: 100%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 50%
+      H16: 50%
+      H17: 100%
+      H18: 100%
+  - escola: EEIEF ANTONIO DE SOUSA BARROS - 23084685
+    habilidades:
+      H01: 100%
+      H02: 93%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 96%
+      H07: 100%
+      H08: 96%
+      H09: 100%
+      H10: 100%
+      H11: 100%
+      H12: 93%
+      H13: 100%
+      H14: 100%
+      H15: 50%
+      H16: 50%
+      H17: 100%
+      H18: 100%
+  - escola: EEIEF JOSE ALVES DE SENA - 23084952
+    habilidades:
+      H01: 92%
+      H02: 92%
+      H03: 100%
+      H04: 86%
+      H05: 92%
+      H06: 89%
+      H07: 94%
+      H08: 94%
+      H09: 94%
+      H10: 94%
+      H11: 93%
+      H12: 100%
+      H13: 90%
+      H14: 92%
+      H15: 44%
+      H16: 54%
+      H17: 100%
+      H18: 97%
+- filtros:
+    avaliacao: Avaliação Contínua da Aprendizagem - Ciclo III / 2025
+    ano_escolar: 9º ano do Ensino Fundamental
+    componente_curricular: Língua Portuguesa (Leitura)
+    rede: Pública
+  habilidades_descritores:
+  - habilidade: H01
+    descritor: 5EF05_P
+    media_geral: 98%
+  - habilidade: H02
+    descritor: 5EF11_P
+    media_geral: 88%
+  - habilidade: H03
+    descritor: 5EF14_P
+    media_geral: 99%
+  - habilidade: H04
+    descritor: 5EF15_P
+    media_geral: 91%
+  - habilidade: H05
+    descritor: 5EF16_P
+    media_geral: 95%
+  - habilidade: H06
+    descritor: 9EF02_P
+    media_geral: 91%
+  - habilidade: H07
+    descritor: 9EF04_P
+    media_geral: 96%
+  - habilidade: H08
+    descritor: 9EF07_P
+    media_geral: 96%
+  - habilidade: H09
+    descritor: 9EF08_P
+    media_geral: 95%
+  - habilidade: H10
+    descritor: 9EF10_P
+    media_geral: 96%
+  - habilidade: H11
+    descritor: 9EF12_P
+    media_geral: 90%
+  - habilidade: H12
+    descritor: 9EF14_P
+    media_geral: 96%
+  - habilidade: H13
+    descritor: 9EF16_P
+    media_geral: 86%
+  - habilidade: H14
+    descritor: 9EF18_P
+    media_geral: 93%
+  - habilidade: H15
+    descritor: 9EF20_P
+    media_geral: 97%
+  - habilidade: H16
+    descritor: 9EF22_P
+    media_geral: 2%
+  - habilidade: H17
+    descritor: 9EF25_P
+    media_geral: 95%
+  - habilidade: H18
+    descritor: 9EF27_P
+    media_geral: 95%
+  - habilidade: H19
+    descritor: 9EF28_P
+    media_geral: 97%
+  por_escola:
+  - escola: EEF 21 DE DEZEMBRO - 23084707
+    habilidades:
+      H01: 99%
+      H02: 80%
+      H03: 99%
+      H04: 86%
+      H05: 100%
+      H06: 87%
+      H07: 94%
+      H08: 95%
+      H09: 96%
+      H10: 99%
+      H11: 86%
+      H12: 98%
+      H13: 77%
+      H14: 89%
+      H15: 96%
+      H16: 4%
+      H17: 93%
+      H18: 92%
+      H19: 96%
+  - escola: EEF FIRMINO JOSE - 23084766
+    habilidades:
+      H01: 100%
+      H02: 97%
+      H03: 100%
+      H04: 97%
+      H05: 97%
+      H06: 100%
+      H07: 100%
+      H08: 97%
+      H09: 97%
+      H10: 97%
+      H11: 100%
+      H12: 97%
+      H13: 98%
+      H14: 97%
+      H15: 100%
+      H16: 0%
+      H17: 98%
+      H18: 100%
+      H19: 100%
+  - escola: EEIEF 03 DE DEZEMBRO - 23084715
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 100%
+      H08: 100%
+      H09: 100%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 100%
+      H16: 0%
+      H17: 100%
+      H18: 100%
+      H19: 100%
+  - escola: EEIEF ANTONIO DE SOUSA BARROS - 23084685
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 100%
+      H08: 100%
+      H09: 95%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 100%
+      H16: 0%
+      H17: 100%
+      H18: 100%
+      H19: 100%
+  - escola: EEIEF JOSE ALVES DE SENA - 23084952
+    habilidades:
+      H01: 93%
+      H02: 97%
+      H03: 100%
+      H04: 93%
+      H05: 76%
+      H06: 90%
+      H07: 93%
+      H08: 93%
+      H09: 86%
+      H10: 84%
+      H11: 86%
+      H12: 90%
+      H13: 91%
+      H14: 98%
+      H15: 97%
+      H16: 0%
+      H17: 95%
+      H18: 97%
+      H19: 95%
+- filtros:
+    avaliacao: Avaliação Contínua da Aprendizagem - Ciclo III / 2025
+    ano_escolar: 6º ano do Ensino Fundamental
+    componente_curricular: Matemática
+    rede: Pública
+  habilidades_descritores:
+  - habilidade: H01
+    descritor: 3EF04_M
+    media_geral: 94%
+  - habilidade: H02
+    descritor: 3EF07_M
+    media_geral: 90%
+  - habilidade: H03
+    descritor: 4EF01_M
+    media_geral: 90%
+  - habilidade: H04
+    descritor: 4EF02_M
+    media_geral: 95%
+  - habilidade: H05
+    descritor: 5EF04_M
+    media_geral: 92%
+  - habilidade: H06
+    descritor: 6EF04_M
+    media_geral: 95%
+  - habilidade: H07
+    descritor: 6EF05_M
+    media_geral: 99%
+  - habilidade: H08
+    descritor: 6EF07_M
+    media_geral: 96%
+  - habilidade: H09
+    descritor: 6EF08_M
+    media_geral: 93%
+  - habilidade: H10
+    descritor: 6EF10_M
+    media_geral: 92%
+  - habilidade: H11
+    descritor: 6EF11_M
+    media_geral: 97%
+  - habilidade: H12
+    descritor: 6EF12_M
+    media_geral: 96%
+  - habilidade: H13
+    descritor: 6EF13_M
+    media_geral: 92%
+  - habilidade: H14
+    descritor: 6EF14_M
+    media_geral: 96%
+  - habilidade: H15
+    descritor: 6EF15_M
+    media_geral: 91%
+  - habilidade: H16
+    descritor: 6EF16_M
+    media_geral: 98%
+  - habilidade: H17
+    descritor: 6EF17_M
+    media_geral: 95%
+  - habilidade: H18
+    descritor: 6EF20_M
+    media_geral: 97%
+  - habilidade: H19
+    descritor: 6EF21_M
+    media_geral: 95%
+  por_escola:
+  - escola: EEF 21 DE DEZEMBRO - 23084707
+    habilidades:
+      H01: 97%
+      H02: 84%
+      H03: 97%
+      H04: 97%
+      H05: 90%
+      H06: 93%
+      H07: 100%
+      H08: 100%
+      H09: 97%
+      H10: 95%
+      H11: 97%
+      H12: 97%
+      H13: 91%
+      H14: 93%
+      H15: 93%
+      H16: 100%
+      H17: 86%
+      H18: 100%
+      H19: 91%
+  - escola: EEF FIRMINO JOSE - 23084766
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 100%
+      H08: 100%
+      H09: 100%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 100%
+      H16: 100%
+      H17: 100%
+      H18: 100%
+      H19: 100%
+  - escola: EEF FRANCISCO MOURAO LIMA - 23177071
+    habilidades:
+      H01: 91%
+      H02: 85%
+      H03: 81%
+      H04: 94%
+      H05: 96%
+      H06: 96%
+      H07: 96%
+      H08: 95%
+      H09: 91%
+      H10: 95%
+      H11: 100%
+      H12: 94%
+      H13: 86%
+      H14: 94%
+      H15: 96%
+      H16: 98%
+      H17: 99%
+      H18: 94%
+      H19: 97%
+  - escola: EEIEF 03 DE DEZEMBRO - 23084715
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 100%
+      H08: 100%
+      H09: 100%
+      H10: 92%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 100%
+      H16: 100%
+      H17: 100%
+      H18: 100%
+      H19: 100%
+  - escola: EEIEF ANTONIO DE SOUSA BARROS - 23084685
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 92%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 100%
+      H08: 96%
+      H09: 100%
+      H10: 88%
+      H11: 100%
+      H12: 92%
+      H13: 100%
+      H14: 100%
+      H15: 92%
+      H16: 92%
+      H17: 100%
+      H18: 100%
+      H19: 96%
+  - escola: EEIEF JOSE ALVES DE SENA - 23084952
+    habilidades:
+      H01: 88%
+      H02: 92%
+      H03: 88%
+      H04: 88%
+      H05: 77%
+      H06: 88%
+      H07: 100%
+      H08: 88%
+      H09: 85%
+      H10: 83%
+      H11: 88%
+      H12: 100%
+      H13: 94%
+      H14: 96%
+      H15: 73%
+      H16: 96%
+      H17: 90%
+      H18: 96%
+      H19: 92%
+- filtros:
+    avaliacao: Avaliação Contínua da Aprendizagem - Ciclo III / 2025
+    ano_escolar: 7º ano do Ensino Fundamental
+    componente_curricular: Matemática
+    rede: Pública
+  habilidades_descritores:
+  - habilidade: H01
+    descritor: 4EF07_M
+    media_geral: 91%
+  - habilidade: H02
+    descritor: 5EF04_M
+    media_geral: 93%
+  - habilidade: H03
+    descritor: 5EF05_M
+    media_geral: 95%
+  - habilidade: H04
+    descritor: 5EF06_M
+    media_geral: 94%
+  - habilidade: H05
+    descritor: 5EF07_M
+    media_geral: 91%
+  - habilidade: H06
+    descritor: 7EF01_M
+    media_geral: 96%
+  - habilidade: H07
+    descritor: 7EF02_M
+    media_geral: 94%
+  - habilidade: H08
+    descritor: 7EF03_M
+    media_geral: 85%
+  - habilidade: H09
+    descritor: 7EF04_M
+    media_geral: 92%
+  - habilidade: H10
+    descritor: 7EF05_M
+    media_geral: 95%
+  - habilidade: H11
+    descritor: 7EF06_M
+    media_geral: 96%
+  - habilidade: H12
+    descritor: 7EF07_M
+    media_geral: 95%
+  - habilidade: H13
+    descritor: 7EF08_M
+    media_geral: 96%
+  - habilidade: H14
+    descritor: 7EF09_M
+    media_geral: 90%
+  - habilidade: H15
+    descritor: 7EF10_M
+    media_geral: 92%
+  - habilidade: H16
+    descritor: 7EF11_M
+    media_geral: 96%
+  - habilidade: H17
+    descritor: 7EF12_M
+    media_geral: 95%
+  - habilidade: H18
+    descritor: 7EF13_M
+    media_geral: 89%
+  - habilidade: H20
+    descritor: 7EF15_M
+    media_geral: 91%
+  - habilidade: H21
+    descritor: 7EF16_M
+    media_geral: 97%
+  - habilidade: H22
+    descritor: 7EF17_M
+    media_geral: 92%
+  por_escola:
+  - escola: EEF 21 DE DEZEMBRO - 23084707
+    habilidades:
+      H01: 87%
+      H02: 99%
+      H03: 94%
+      H04: 92%
+      H05: 85%
+      H06: 94%
+      H07: 94%
+      H08: 77%
+      H09: 90%
+      H10: 99%
+      H11: 95%
+      H12: 97%
+      H13: 99%
+      H14: 83%
+      H15: 95%
+      H16: 97%
+      H17: 95%
+      H18: 85%
+      H20: 87%
+      H21: 97%
+      H22: 95%
+  - escola: EEF FIRMINO JOSE - 23084766
+    habilidades:
+      H01: 93%
+      H02: 93%
+      H03: 96%
+      H04: 93%
+      H05: 89%
+      H06: 96%
+      H07: 93%
+      H08: 85%
+      H09: 85%
+      H10: 89%
+      H11: 100%
+      H12: 94%
+      H13: 85%
+      H14: 98%
+      H15: 89%
+      H16: 89%
+      H17: 89%
+      H18: 93%
+      H20: 91%
+      H21: 96%
+      H22: 93%
+  - escola: EEIEF 03 DE DEZEMBRO - 23084715
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 100%
+      H08: 100%
+      H09: 100%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 100%
+      H16: 100%
+      H17: 100%
+      H18: 100%
+      H20: 100%
+      H21: 100%
+      H22: 100%
+  - escola: EEIEF ANTONIO DE SOUSA BARROS - 23084685
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 100%
+      H08: 92%
+      H09: 100%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 100%
+      H16: 100%
+      H17: 100%
+      H18: 100%
+      H20: 100%
+      H21: 100%
+      H22: 100%
+  - escola: EEIEF JOSE ALVES DE SENA - 23084952
+    habilidades:
+      H01: 94%
+      H02: 78%
+      H03: 94%
+      H04: 94%
+      H05: 100%
+      H06: 97%
+      H07: 94%
+      H08: 97%
+      H09: 97%
+      H10: 89%
+      H11: 92%
+      H12: 88%
+      H13: 94%
+      H14: 94%
+      H15: 83%
+      H16: 94%
+      H17: 97%
+      H18: 92%
+      H20: 93%
+      H21: 97%
+      H22: 82%
+- filtros:
+    avaliacao: Avaliação Contínua da Aprendizagem - Ciclo III / 2025
+    ano_escolar: 8º ano do Ensino Fundamental
+    componente_curricular: Matemática
+    rede: Pública
+  habilidades_descritores:
+  - habilidade: H01
+    descritor: 4EF07_M
+    media_geral: 91%
+  - habilidade: H02
+    descritor: 5EF04_M
+    media_geral: 98%
+  - habilidade: H03
+    descritor: 5EF05_M
+    media_geral: 91%
+  - habilidade: H04
+    descritor: 5EF06_M
+    media_geral: 98%
+  - habilidade: H05
+    descritor: 5EF07_M
+    media_geral: 2%
+  - habilidade: H06
+    descritor: 7EF05_M
+    media_geral: 94%
+  - habilidade: H07
+    descritor: 7EF13_M
+    media_geral: 7%
+  - habilidade: H08
+    descritor: 7EF14_M
+    media_geral: 95%
+  - habilidade: H09
+    descritor: 8EF01_M
+    media_geral: 95%
+  - habilidade: H10
+    descritor: 8EF02_M
+    media_geral: 86%
+  - habilidade: H11
+    descritor: 8EF03_M
+    media_geral: 91%
+  - habilidade: H12
+    descritor: 8EF04_M
+    media_geral: 95%
+  - habilidade: H13
+    descritor: 8EF05_M
+    media_geral: 97%
+  - habilidade: H14
+    descritor: 8EF06_M
+    media_geral: 96%
+  - habilidade: H15
+    descritor: 8EF07_M
+    media_geral: 91%
+  - habilidade: H16
+    descritor: 8EF08_M
+    media_geral: 97%
+  - habilidade: H17
+    descritor: 8EF09_M
+    media_geral: 95%
+  - habilidade: H18
+    descritor: 8EF10_M
+    media_geral: 98%
+  - habilidade: H19
+    descritor: 8EF12_M
+    media_geral: 94%
+  por_escola:
+  - escola: EEF 21 DE DEZEMBRO - 23084707
+    habilidades:
+      H01: 85%
+      H02: 100%
+      H03: 89%
+      H04: 100%
+      H05: 4%
+      H06: 90%
+      H07: 12%
+      H08: 98%
+      H09: 94%
+      H10: 74%
+      H11: 87%
+      H12: 95%
+      H13: 98%
+      H14: 96%
+      H15: 87%
+      H16: 95%
+      H17: 95%
+      H18: 98%
+      H19: 93%
+  - escola: EEF FIRMINO JOSE - 23084766
+    habilidades:
+      H01: 100%
+      H02: 97%
+      H03: 97%
+      H04: 100%
+      H05: 0%
+      H06: 97%
+      H07: 0%
+      H08: 100%
+      H09: 97%
+      H10: 97%
+      H11: 99%
+      H12: 99%
+      H13: 97%
+      H14: 100%
+      H15: 100%
+      H16: 100%
+      H17: 97%
+      H18: 100%
+      H19: 97%
+  - escola: EEIEF 03 DE DEZEMBRO - 23084715
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 0%
+      H06: 100%
+      H07: 0%
+      H08: 100%
+      H09: 100%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 100%
+      H16: 100%
+      H17: 100%
+      H18: 100%
+      H19: 100%
+  - escola: EEIEF ANTONIO DE SOUSA BARROS - 23084685
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 0%
+      H06: 96%
+      H07: 0%
+      H08: 100%
+      H09: 93%
+      H10: 100%
+      H11: 93%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 96%
+      H16: 96%
+      H17: 100%
+      H18: 100%
+      H19: 93%
+  - escola: EEIEF JOSE ALVES DE SENA - 23084952
+    habilidades:
+      H01: 92%
+      H02: 94%
+      H03: 86%
+      H04: 89%
+      H05: 0%
+      H06: 96%
+      H07: 8%
+      H08: 83%
+      H09: 93%
+      H10: 94%
+      H11: 89%
+      H12: 90%
+      H13: 94%
+      H14: 89%
+      H15: 86%
+      H16: 96%
+      H17: 92%
+      H18: 94%
+      H19: 94%
+- filtros:
+    avaliacao: Avaliação Contínua da Aprendizagem - Ciclo III / 2025
+    ano_escolar: 9º ano do Ensino Fundamental
+    componente_curricular: Matemática
+    rede: Pública
+  habilidades_descritores:
+  - habilidade: H01
+    descritor: 7EF01_M
+    media_geral: 96%
+  - habilidade: H02
+    descritor: 7EF08_M
+    media_geral: 98%
+  - habilidade: H03
+    descritor: 7EF10_M
+    media_geral: 99%
+  - habilidade: H04
+    descritor: 7EF15_M
+    media_geral: 97%
+  - habilidade: H05
+    descritor: 7EF17_M
+    media_geral: 97%
+  - habilidade: H06
+    descritor: 9EF01_M
+    media_geral: 97%
+  - habilidade: H07
+    descritor: 9EF02_M
+    media_geral: 92%
+  - habilidade: H08
+    descritor: 9EF03_M
+    media_geral: 95%
+  - habilidade: H09
+    descritor: 9EF04_M
+    media_geral: 96%
+  - habilidade: H10
+    descritor: 9EF05_M
+    media_geral: 99%
+  - habilidade: H11
+    descritor: 9EF06_M
+    media_geral: 95%
+  - habilidade: H12
+    descritor: 9EF07_M
+    media_geral: 93%
+  - habilidade: H13
+    descritor: 9EF08_M
+    media_geral: 97%
+  - habilidade: H14
+    descritor: 9EF09_M
+    media_geral: 97%
+  - habilidade: H15
+    descritor: 9EF10_M
+    media_geral: 1%
+  - habilidade: H16
+    descritor: 9EF11_M
+    media_geral: 97%
+  - habilidade: H17
+    descritor: 9EF12_M
+    media_geral: 97%
+  - habilidade: H18
+    descritor: 9EF13_M
+    media_geral: 98%
+  - habilidade: H19
+    descritor: 9EF14_M
+    media_geral: 99%
+  - habilidade: H20
+    descritor: 9EF15_M
+    media_geral: 94%
+  - habilidade: H21
+    descritor: 9EF16_M
+    media_geral: 97%
+  por_escola:
+  - escola: EEF 21 DE DEZEMBRO - 23084707
+    habilidades:
+      H01: 95%
+      H02: 96%
+      H03: 100%
+      H04: 99%
+      H05: 99%
+      H06: 96%
+      H07: 90%
+      H08: 93%
+      H09: 98%
+      H10: 99%
+      H11: 96%
+      H12: 92%
+      H13: 96%
+      H14: 98%
+      H15: 0%
+      H16: 95%
+      H17: 96%
+      H18: 96%
+      H19: 99%
+      H20: 92%
+      H21: 96%
+  - escola: EEF FIRMINO JOSE - 23084766
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 97%
+      H04: 97%
+      H05: 100%
+      H06: 98%
+      H07: 97%
+      H08: 97%
+      H09: 97%
+      H10: 97%
+      H11: 97%
+      H12: 97%
+      H13: 97%
+      H14: 100%
+      H15: 0%
+      H16: 100%
+      H17: 100%
+      H18: 100%
+      H19: 100%
+      H20: 98%
+      H21: 98%
+  - escola: EEIEF 03 DE DEZEMBRO - 23084715
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 100%
+      H07: 100%
+      H08: 100%
+      H09: 100%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 0%
+      H16: 100%
+      H17: 100%
+      H18: 100%
+      H19: 100%
+      H20: 100%
+      H21: 100%
+  - escola: EEIEF ANTONIO DE SOUSA BARROS - 23084685
+    habilidades:
+      H01: 100%
+      H02: 100%
+      H03: 100%
+      H04: 100%
+      H05: 100%
+      H06: 95%
+      H07: 100%
+      H08: 100%
+      H09: 90%
+      H10: 100%
+      H11: 100%
+      H12: 100%
+      H13: 100%
+      H14: 100%
+      H15: 0%
+      H16: 100%
+      H17: 100%
+      H18: 100%
+      H19: 100%
+      H20: 100%
+      H21: 100%
+  - escola: EEIEF JOSE ALVES DE SENA - 23084952
+    habilidades:
+      H01: 93%
+      H02: 100%
+      H03: 100%
+      H04: 90%
+      H05: 90%
+      H06: 98%
+      H07: 86%
+      H08: 93%
+      H09: 93%
+      H10: 98%
+      H11: 86%
+      H12: 90%
+      H13: 97%
+      H14: 90%
+      H15: 3%
+      H16: 100%
+      H17: 97%
+      H18: 100%
+      H19: 97%
+      H20: 91%
+      H21: 93%
