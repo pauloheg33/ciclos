@@ -228,10 +228,25 @@ const escolasPorFiltro = {
             "EEIEF 03 DE DEZEMBRO",
             "EEIEF ANTONIO DE SOUSA BARROS",
             "EEIEF JOSE ALVES DE SENA"
+        ],
+        "Matemática": [
+            "EEF 21 DE DEZEMBRO",
+            "EEF FIRMINO JOSE", 
+            "EEF FRANCISCO MOURAO LIMA",
+            "EEIEF 03 DE DEZEMBRO",
+            "EEIEF ANTONIO DE SOUSA BARROS",
+            "EEIEF JOSE ALVES DE SENA"
         ]
     },
     "7º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": [
+            "EEF 21 DE DEZEMBRO",
+            "EEF FIRMINO JOSE",
+            "EEIEF 03 DE DEZEMBRO", 
+            "EEIEF ANTONIO DE SOUSA BARROS",
+            "EEIEF JOSE ALVES DE SENA"
+        ],
+        "Matemática": [
             "EEF 21 DE DEZEMBRO",
             "EEF FIRMINO JOSE",
             "EEIEF 03 DE DEZEMBRO", 
@@ -246,10 +261,24 @@ const escolasPorFiltro = {
             "EEIEF 03 DE DEZEMBRO",
             "EEIEF ANTONIO DE SOUSA BARROS",
             "EEIEF JOSE ALVES DE SENA"
+        ],
+        "Matemática": [
+            "EEF 21 DE DEZEMBRO",
+            "EEF FIRMINO JOSE",
+            "EEIEF 03 DE DEZEMBRO",
+            "EEIEF ANTONIO DE SOUSA BARROS",
+            "EEIEF JOSE ALVES DE SENA"
         ]
     },
     "9º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": [
+            "EEF 21 DE DEZEMBRO",
+            "EEF FIRMINO JOSE",
+            "EEIEF 03 DE DEZEMBRO",
+            "EEIEF ANTONIO DE SOUSA BARROS", 
+            "EEIEF JOSE ALVES DE SENA"
+        ],
+        "Matemática": [
             "EEF 21 DE DEZEMBRO",
             "EEF FIRMINO JOSE",
             "EEIEF 03 DE DEZEMBRO",
