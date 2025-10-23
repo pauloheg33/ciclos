@@ -653,8 +653,8 @@ function updateCycleCard(cardId, data, title, subtitle) {
     // Atualizar título
     card.querySelector('h2').textContent = title;
     
-    // Atualizar percentual de estudantes com aprendizagem adequada
-    card.querySelector('.percentage-large').textContent = `${data.adequado}%`;
+    // Atualizar percentual com a média geral da escola naquele ano e componente
+    card.querySelector('.percentage-large').textContent = `${data.media || 0}%`;
     
     // Atualizar barra de progresso
     const progressBar = card.querySelector('.progress-bar-horizontal');
@@ -701,21 +701,21 @@ function updateAnalytics() {
     
     // Atualizar cards com dados reais ou fixos
     if (cicloIPerformance.total > 0) {
-        updateCycleCard('ciclo-1-card', cicloIPerformance, '2025 - Ciclo I', 'Estudantes com aprendizagem adequada');
+        updateCycleCard('ciclo-1-card', cicloIPerformance, '2025 - Ciclo I', 'Média geral de desempenho');
     } else {
-        updateCycleCard('ciclo-1-card', dadosFixos.cicloI, '2025 - Ciclo I', 'Estudantes com aprendizagem adequada');
+        updateCycleCard('ciclo-1-card', {...dadosFixos.cicloI, media: 98}, '2025 - Ciclo I', 'Média geral de desempenho');
     }
     
     if (cicloIIPerformance.total > 0) {
-        updateCycleCard('ciclo-2-card', cicloIIPerformance, '2025 - Ciclo II', 'Estudantes com aprendizagem adequada');
+        updateCycleCard('ciclo-2-card', cicloIIPerformance, '2025 - Ciclo II', 'Média geral de desempenho');
     } else {
-        updateCycleCard('ciclo-2-card', dadosFixos.cicloII, '2025 - Ciclo II', 'Estudantes com aprendizagem adequada');
+        updateCycleCard('ciclo-2-card', {...dadosFixos.cicloII, media: 98}, '2025 - Ciclo II', 'Média geral de desempenho');
     }
     
     if (cicloIIIPerformance.total > 0) {
-        updateCycleCard('ciclo-3-card', cicloIIIPerformance, '2025 - Ciclo III', 'Estudantes com aprendizagem adequada');
+        updateCycleCard('ciclo-3-card', cicloIIIPerformance, '2025 - Ciclo III', 'Média geral de desempenho');
     } else {
-        updateCycleCard('ciclo-3-card', dadosFixos.cicloIII, '2025 - Ciclo III', 'Estudantes com aprendizagem adequada');
+        updateCycleCard('ciclo-3-card', {...dadosFixos.cicloIII, media: 97}, '2025 - Ciclo III', 'Média geral de desempenho');
     }
     
     console.log('📊 Analytics atualizados com dados reais dos 3 ciclos:', {
