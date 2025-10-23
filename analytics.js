@@ -483,12 +483,16 @@ function calculateCyclePerformance(cycleData) {
     const componente = document.getElementById('componente').value;
     const escola = document.getElementById('escola').value;
     
+    console.log('🔍 Calculando performance para:', {ano, componente, escola});
+    console.log('🔍 Dados do ciclo disponíveis:', Object.keys(cycleData));
+    
     if (!ano || !componente) {
         return { adequado: 0, intermediario: 0, defasagem: 0, total: 0, media: 0 };
     }
     
     // Verificar se temos dados para esta combinação
     if (!cycleData[ano] || !cycleData[ano][componente]) {
+        console.log('🚫 Dados não encontrados para:', {ano, componente});
         return { adequado: 0, intermediario: 0, defasagem: 0, total: 0, media: 0 };
     }
     
@@ -587,20 +591,26 @@ function updateAnalytics() {
     
     // Atualizar cards com dados reais ou fixos
     if (cicloIPerformance.total > 0) {
+        console.log('✅ Usando dados calculados para Ciclo I');
         updateCycleCard('ciclo-1-card', cicloIPerformance, '2025 - Ciclo I', 'Média geral de desempenho');
     } else {
+        console.log('🔄 Usando dados fixos para Ciclo I');
         updateCycleCard('ciclo-1-card', dadosFixos.cicloI, '2025 - Ciclo I', 'Média geral de desempenho');
     }
     
     if (cicloIIPerformance.total > 0) {
+        console.log('✅ Usando dados calculados para Ciclo II');
         updateCycleCard('ciclo-2-card', cicloIIPerformance, '2025 - Ciclo II', 'Média geral de desempenho');
     } else {
+        console.log('🔄 Usando dados fixos para Ciclo II');
         updateCycleCard('ciclo-2-card', dadosFixos.cicloII, '2025 - Ciclo II', 'Média geral de desempenho');
     }
     
     if (cicloIIIPerformance.total > 0) {
+        console.log('✅ Usando dados calculados para Ciclo III');
         updateCycleCard('ciclo-3-card', cicloIIIPerformance, '2025 - Ciclo III', 'Média geral de desempenho');
     } else {
+        console.log('🔄 Usando dados fixos para Ciclo III');
         updateCycleCard('ciclo-3-card', dadosFixos.cicloIII, '2025 - Ciclo III', 'Média geral de desempenho');
     }
     
@@ -609,6 +619,10 @@ function updateAnalytics() {
         cicloII: cicloIIPerformance, 
         cicloIII: cicloIIIPerformance
     });
+    
+    // Debug específico para ciclo III
+    console.log('🔍 Debug Ciclo III total:', cicloIIIPerformance.total);
+    console.log('🔍 Usando dados fixos?', cicloIIIPerformance.total === 0 ? 'SIM' : 'NÃO');
 }
 
 // Função para mostrar mensagem de erro
@@ -656,6 +670,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializar auto sync
     initAutoSync();
+    
+    // Forçar carregamento imediato dos dados do TXT
+    setTimeout(() => {
+        loadDataFromTxtFile();
+    }, 1000);
 });
 
 // =====================================
@@ -752,6 +771,16 @@ async function loadDataFromTxtFile() {
             cicloIII: Object.keys(parsedData.cicloIII)
         });
         
+        // Debug: Comparar dados específicos
+        if (parsedData.cicloI['6º ano do Ensino Fundamental'] && parsedData.cicloIII['6º ano do Ensino Fundamental']) {
+            const escola1CicloI = parsedData.cicloI['6º ano do Ensino Fundamental']['Língua Portuguesa (Leitura)']['EEF 21 DE DEZEMBRO'];
+            const escola1CicloIII = parsedData.cicloIII['6º ano do Ensino Fundamental']['Língua Portuguesa (Leitura)']['EEF 21 DE DEZEMBRO'];
+            
+            console.log('🔍 Debug - EEF 21 DE DEZEMBRO - 6º ano LP:');
+            console.log('Ciclo I:', escola1CicloI);
+            console.log('Ciclo III:', escola1CicloIII);
+        }
+        
         console.log('✅ Dados atualizados do arquivo TXT com sucesso!');
         updateSyncStatus('active', 'Dados carregados');
         
@@ -778,12 +807,15 @@ function parseTxtData(txtContent) {
         const line = lines[i].trim();
         
         // Detectar ciclo
-        if (line.includes('📘 CICLO I')) {
+        if (line.includes('📘 CICLO I –')) {
             currentCiclo = 'cicloI';
-        } else if (line.includes('📘 CICLO II')) {
-            currentCiclo = 'cicloII';
-        } else if (line.includes('📘 CICLO III')) {
+            console.log('🔵 Iniciando CICLO I');
+        } else if (line.includes('📘 CICLO II –')) {
+            currentCiclo = 'cicloII';  
+            console.log('🟡 Iniciando CICLO II');
+        } else if (line.includes('📘 CICLO III –')) {
             currentCiclo = 'cicloIII';
+            console.log('🔴 Iniciando CICLO III');
         }
         
         // Detectar ano e componente
