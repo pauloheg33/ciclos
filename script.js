@@ -25,7 +25,7 @@ class DashboardController {
         setTimeout(() => {
             // Definir seleção padrão após popular os filtros
             this.setDefaultFilters();
-        }, 100);
+        }, 200); // Aumentei ligeiramente para garantir que todos os options são carregados
         
         // Iniciar verificação automática de atualizações
         this.startAutoReload();
@@ -33,18 +33,19 @@ class DashboardController {
 
     // Definir filtros padrão para exibição inicial
     setDefaultFilters() {
-        // Valores padrão que serão selecionados automaticamente
+        // Valores padrão que serão selecionados automaticamente - baseados na pré-seleção desejada
         const defaultValues = {
             avaliacao: 'Avaliação Contínua da Aprendizagem - Ciclo III / 2025',
             anoEscolar: '6º ano do Ensino Fundamental', 
             componente: 'Língua Portuguesa (Leitura)',
             rede: 'Pública',
-            escola: 'geral' // Média Geral
+            escola: 'geral', // Média Geral
+            performance: 'all' // Todas as faixas
         };
 
-        console.log('🎯 Aplicando filtros padrão:', defaultValues);
+        console.log('🎯 Aplicando filtros padrão conforme pré-seleção:', defaultValues);
 
-        // Aplicar os valores padrão aos selects
+        // Aplicar os valores padrão aos selects (incluindo faixa de performance)
         let filtersApplied = 0;
         Object.keys(defaultValues).forEach(filterKey => {
             const selectId = this.getSelectId(filterKey);
@@ -69,6 +70,9 @@ class DashboardController {
                     // Adicionar classe visual para indicar seleção ativa
                     selectElement.classList.add('filter-selected');
                     
+                    // Adicionar indicador visual de pré-seleção
+                    this.addPreselectionIndicator(selectElement);
+                    
                     filtersApplied++;
                     console.log(`✅ Filtro aplicado: ${filterKey} = ${defaultValues[filterKey]}`);
                 } else {
@@ -80,16 +84,20 @@ class DashboardController {
             }
         });
 
-        console.log(`📊 Total de filtros aplicados: ${filtersApplied}/5`);
+        console.log(`📊 Total de filtros aplicados: ${filtersApplied}/6`);
 
         // Aplicar os filtros para mostrar os dados iniciais com um pequeno delay
-        if (filtersApplied >= 4) { // Pelo menos os 4 filtros básicos
+        if (filtersApplied >= 4) { // Pelo menos os 4 filtros básicos (performance é aplicado separadamente)
+            // Garantir que performance também seja definido
+            document.getElementById('performance-range').value = 'all';
+            this.currentFilters.performance = 'all';
+            
             setTimeout(() => {
-                console.log('🚀 Aplicando filtros e renderizando cards...');
+                console.log('🚀 Aplicando filtros pré-selecionados e renderizando cards...');
                 this.applyFilters();
                 // Mostrar notificação de que os filtros padrão foram aplicados
-                this.showUpdateNotification('🎯 Filtros padrão aplicados: 6º ano - Língua Portuguesa', 'info');
-            }, 1000); // Aumentei para 1 segundo
+                this.showUpdateNotification('🎯 Filtros pré-selecionados aplicados com sucesso!', 'info');
+            }, 700); // Tempo adequado para carregamento
         } else {
             console.log('❌ Não foi possível aplicar todos os filtros padrão, mostrando mensagem inicial');
             this.showInitialMessage();
@@ -333,7 +341,7 @@ class DashboardController {
     }
 
     getColorClass(percentage) {
-        if (percentage <= 40) return 'red';
+        if (percentage <= 50) return 'red';
         if (percentage <= 60) return 'orange';
         if (percentage <= 80) return 'light-blue';
         return 'teal';
@@ -394,17 +402,17 @@ class DashboardController {
     }
 
     getPerformanceIcon(percentage) {
-        if (percentage <= 40) return '🔴';
+        if (percentage <= 50) return '🔴';
         if (percentage <= 60) return '🟠';
         if (percentage <= 80) return '🔵';
         return '🟢';
     }
 
     getPerformanceColor(percentage) {
-        if (percentage <= 40) return '#ef4444';
-        if (percentage <= 60) return '#f59e0b';
+        if (percentage <= 50) return '#eb1212ff';
+        if (percentage <= 60) return '#ffb347';
         if (percentage <= 80) return '#3b82f6';
-        return '#10b981';
+        return '#0ef8aaff';
     }
 
     // Função para verificar se houve mudanças no arquivo
@@ -562,10 +570,40 @@ class DashboardController {
     }
 
     getPerformanceLabel(percentage) {
-        if (percentage <= 40) return 'Crítico (até 40%)';
-        if (percentage <= 60) return 'Baixo (41% a 60%)';
+        if (percentage <= 50) return 'Crítico (até 50%)';
+        if (percentage <= 60) return 'Baixo (51% a 60%)';
         if (percentage <= 80) return 'Intermediário (61% a 80%)';
         return 'Adequado (acima de 80%)';
+    }
+
+    // Adicionar indicador visual de pré-seleção
+    addPreselectionIndicator(selectElement) {
+        // Remove qualquer indicador existente
+        const existingIndicator = selectElement.parentElement.querySelector('.preselection-indicator');
+        if (existingIndicator) {
+            existingIndicator.remove();
+        }
+
+        // Cria novo indicador
+        const indicator = document.createElement('span');
+        indicator.className = 'preselection-indicator';
+        indicator.innerHTML = '🎯';
+        indicator.title = 'Filtro pré-selecionado automaticamente';
+        
+        // Adiciona o indicador ao lado do select
+        selectElement.parentElement.appendChild(indicator);
+        
+        // Remove o indicador após alguns segundos
+        setTimeout(() => {
+            if (indicator.parentElement) {
+                indicator.style.opacity = '0';
+                setTimeout(() => {
+                    if (indicator.parentElement) {
+                        indicator.remove();
+                    }
+                }, 300);
+            }
+        }, 5000);
     }
 }
 
