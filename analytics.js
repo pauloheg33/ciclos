@@ -352,6 +352,9 @@ function updateEscolasFilter() {
     const anoSelecionado = anoSelect.value;
     const componenteSelecionado = componenteSelect.value;
     
+    // Guardar a seleção atual
+    const escolaAtualmenteSelecionada = escolaSelect.value;
+    
     // Limpar opções atuais
     escolaSelect.innerHTML = '<option value="">Selecione a escola</option><option value="geral">📊 Média Geral</option>';
     
@@ -382,11 +385,19 @@ function updateEscolasFilter() {
             });
         }
     }
+    
+    // Restaurar a seleção anterior se ela ainda existir nas opções
+    if (escolaAtualmenteSelecionada) {
+        const opcaoExiste = Array.from(escolaSelect.options).some(option => option.value === escolaAtualmenteSelecionada);
+        if (opcaoExiste) {
+            escolaSelect.value = escolaAtualmenteSelecionada;
+        }
+    }
 }
 
 // Função para aplicar filtros padrão
 function setDefaultFilters() {
-    console.log('🎯 Aplicando filtros padrão...');
+    console.log('🎯 Aplicando filtros padrão apenas se necessário...');
     
     const defaultValues = {
         avaliacao: 'Avaliação Contínua da Aprendizagem - Ciclo III / 2025',
@@ -397,17 +408,24 @@ function setDefaultFilters() {
         performance: 'all'
     };
     
-    // Aplicar filtros padrão
-    document.getElementById('avaliacao').value = defaultValues.avaliacao;
-    document.getElementById('ano-escolar').value = defaultValues.anoEscolar;
-    document.getElementById('componente').value = defaultValues.componente;
-    document.getElementById('rede').value = defaultValues.rede;
-    document.getElementById('performance-range').value = defaultValues.performance;
+    // Aplicar filtros padrão apenas se os campos estiverem vazios
+    const avaliacaoEl = document.getElementById('avaliacao');
+    const anoEl = document.getElementById('ano-escolar');
+    const componenteEl = document.getElementById('componente');
+    const redeEl = document.getElementById('rede');
+    const performanceEl = document.getElementById('performance-range');
     
-    // Atualizar escolas após aplicar filtros de ano e componente
+    if (!avaliacaoEl.value) avaliacaoEl.value = defaultValues.avaliacao;
+    if (!anoEl.value) anoEl.value = defaultValues.anoEscolar;
+    if (!componenteEl.value) componenteEl.value = defaultValues.componente;
+    if (!redeEl.value) redeEl.value = defaultValues.rede;
+    if (!performanceEl.value) performanceEl.value = defaultValues.performance;
+    
+    // Atualizar escolas após aplicar filtros de ano e componente (se necessário)
     setTimeout(() => {
         updateEscolasFilter();
-        document.getElementById('escola').value = defaultValues.escola;
+        const escolaEl = document.getElementById('escola');
+        if (!escolaEl.value) escolaEl.value = defaultValues.escola;
     }, 100);
 }
 
@@ -606,4 +624,201 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('rede').addEventListener('change', updateAnalytics);
     document.getElementById('escola').addEventListener('change', updateAnalytics);
     document.getElementById('performance-range').addEventListener('change', updateAnalytics);
+    
+    // Inicializar auto sync
+    initAutoSync();
 });
+
+// =====================================
+// AUTO SYNC SYSTEM
+// =====================================
+
+let lastModified = null;
+let syncInterval = null;
+
+// Função para inicializar o sistema de auto sync
+function initAutoSync() {
+    console.log('🔄 Sistema de Auto Sync inicializado');
+    
+    // Atualizar status inicial
+    updateSyncStatus('active', 'Sistema iniciado');
+    
+    // Carregar dados inicialmente do arquivo TXT
+    loadDataFromTxtFile();
+    
+    // Verificar mudanças a cada 2 segundos
+    syncInterval = setInterval(checkForFileChanges, 2000);
+    
+    // Parar o sync quando a página for fechada
+    window.addEventListener('beforeunload', function() {
+        if (syncInterval) {
+            clearInterval(syncInterval);
+        }
+    });
+}
+
+// Função para verificar mudanças no arquivo
+async function checkForFileChanges() {
+    try {
+        const response = await fetch('CICLOS_I_II_III_2025_percentual_CORRIGIDO.txt', { 
+            method: 'HEAD',
+            cache: 'no-cache'
+        });
+        
+        if (response.ok) {
+            const currentModified = response.headers.get('last-modified');
+            
+            if (lastModified && lastModified !== currentModified) {
+                console.log('📁 Arquivo TXT modificado - Atualizando dados...');
+                updateSyncStatus('syncing', 'Sincronizando...');
+                await loadDataFromTxtFile();
+                updateAnalytics();
+                updateSyncStatus('active', 'Dados atualizados');
+            }
+            
+            lastModified = currentModified;
+        }
+    } catch (error) {
+        console.warn('⚠️ Erro ao verificar modificações do arquivo:', error);
+        updateSyncStatus('error', 'Erro na verificação');
+    }
+}
+
+// Função para carregar e parsear dados do arquivo TXT
+async function loadDataFromTxtFile() {
+    try {
+        console.log('📖 Carregando dados do arquivo TXT...');
+        
+        const response = await fetch('CICLOS_I_II_III_2025_percentual_CORRIGIDO.txt', {
+            cache: 'no-cache'
+        });
+        
+        if (!response.ok) {
+            throw new Error('Arquivo TXT não encontrado');
+        }
+        
+        const txtContent = await response.text();
+        const parsedData = parseTxtData(txtContent);
+        
+        // Atualizar os objetos de dados globais
+        Object.assign(cicloIData, parsedData.cicloI);
+        Object.assign(cicloIIData, parsedData.cicloII);
+        Object.assign(cicloIIIData, parsedData.cicloIII);
+        
+        console.log('✅ Dados atualizados do arquivo TXT com sucesso!');
+        updateSyncStatus('active', 'Dados carregados');
+        
+    } catch (error) {
+        console.error('❌ Erro ao carregar arquivo TXT:', error);
+        updateSyncStatus('error', 'Erro ao carregar dados');
+    }
+}
+
+// Função para parsear o conteúdo do arquivo TXT
+function parseTxtData(txtContent) {
+    const lines = txtContent.split('\n');
+    const data = {
+        cicloI: {},
+        cicloII: {},
+        cicloIII: {}
+    };
+    
+    let currentCiclo = null;
+    let currentAno = null;
+    let currentComponente = null;
+    
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        
+        // Detectar ciclo
+        if (line.includes('📘 CICLO I')) {
+            currentCiclo = 'cicloI';
+        } else if (line.includes('📘 CICLO II')) {
+            currentCiclo = 'cicloII';
+        } else if (line.includes('📘 CICLO III')) {
+            currentCiclo = 'cicloIII';
+        }
+        
+        // Detectar ano e componente
+        if (line.includes('ano do Ensino Fundamental –')) {
+            const match = line.match(/(\d+º ano do Ensino Fundamental) – (.+)/);
+            if (match) {
+                currentAno = match[1];
+                currentComponente = match[2];
+                
+                if (currentCiclo && !data[currentCiclo][currentAno]) {
+                    data[currentCiclo][currentAno] = {};
+                }
+                if (currentCiclo && !data[currentCiclo][currentAno][currentComponente]) {
+                    data[currentCiclo][currentAno][currentComponente] = {};
+                }
+            }
+        }
+        
+        // Detectar dados da escola
+        if (line.includes('- EE') || line.includes('- EEIEF')) {
+            const schoolMatch = line.match(/- (.+?) - \d+/);
+            if (schoolMatch && currentCiclo && currentAno && currentComponente) {
+                const schoolName = schoolMatch[1];
+                
+                // Procurar a próxima linha com os dados
+                const nextLine = lines[i + 1];
+                if (nextLine) {
+                    const dataMatch = nextLine.match(/Defasagem: ([\d.]+)% \| Intermediário: ([\d.]+)% \| Adequado: ([\d.]+)% \| Média Geral: ([\d.]+)%/);
+                    if (dataMatch) {
+                        data[currentCiclo][currentAno][currentComponente][schoolName] = {
+                            defasagem: parseFloat(dataMatch[1]),
+                            intermediario: parseFloat(dataMatch[2]),
+                            adequado: parseFloat(dataMatch[3]),
+                            media: parseFloat(dataMatch[4])
+                        };
+                    }
+                }
+            }
+        }
+    }
+    
+    return data;
+}
+
+// Função para atualizar o status visual do sync
+function updateSyncStatus(status, message) {
+    const syncStatusElement = document.getElementById('sync-status');
+    const syncIconElement = syncStatusElement?.querySelector('.sync-icon');
+    const syncTextElement = syncStatusElement?.querySelector('.sync-text');
+    const syncTimestampElement = document.getElementById('sync-timestamp');
+    
+    if (!syncStatusElement) return;
+    
+    // Remover classes de status anteriores
+    syncStatusElement.classList.remove('syncing', 'error');
+    
+    // Definir ícone e texto baseado no status
+    switch (status) {
+        case 'active':
+            if (syncIconElement) syncIconElement.textContent = '✅';
+            if (syncTextElement) syncTextElement.textContent = 'Auto Sync Ativo';
+            break;
+        case 'syncing':
+            syncStatusElement.classList.add('syncing');
+            if (syncIconElement) syncIconElement.textContent = '🔄';
+            if (syncTextElement) syncTextElement.textContent = 'Sincronizando';
+            break;
+        case 'error':
+            syncStatusElement.classList.add('error');
+            if (syncIconElement) syncIconElement.textContent = '❌';
+            if (syncTextElement) syncTextElement.textContent = 'Erro no Sync';
+            break;
+    }
+    
+    // Atualizar timestamp
+    if (syncTimestampElement) {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('pt-BR', { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            second: '2-digit' 
+        });
+        syncTimestampElement.textContent = `${message} - ${timeString}`;
+    }
+}
