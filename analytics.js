@@ -729,10 +729,28 @@ async function loadDataFromTxtFile() {
         const txtContent = await response.text();
         const parsedData = parseTxtData(txtContent);
         
-        // Atualizar os objetos de dados globais
-        Object.assign(cicloIData, parsedData.cicloI);
-        Object.assign(cicloIIData, parsedData.cicloII);
-        Object.assign(cicloIIIData, parsedData.cicloIII);
+        // Substituir completamente os objetos de dados globais
+        if (parsedData.cicloI && Object.keys(parsedData.cicloI).length > 0) {
+            // Limpar dados antigos e usar os novos
+            for (let key in cicloIData) delete cicloIData[key];
+            Object.assign(cicloIData, parsedData.cicloI);
+        }
+        
+        if (parsedData.cicloII && Object.keys(parsedData.cicloII).length > 0) {
+            for (let key in cicloIIData) delete cicloIIData[key];
+            Object.assign(cicloIIData, parsedData.cicloII);
+        }
+        
+        if (parsedData.cicloIII && Object.keys(parsedData.cicloIII).length > 0) {
+            for (let key in cicloIIIData) delete cicloIIIData[key];
+            Object.assign(cicloIIIData, parsedData.cicloIII);
+        }
+        
+        console.log('📊 Dados parsados:', {
+            cicloI: Object.keys(parsedData.cicloI),
+            cicloII: Object.keys(parsedData.cicloII), 
+            cicloIII: Object.keys(parsedData.cicloIII)
+        });
         
         console.log('✅ Dados atualizados do arquivo TXT com sucesso!');
         updateSyncStatus('active', 'Dados carregados');
@@ -773,7 +791,9 @@ function parseTxtData(txtContent) {
             const match = line.match(/(\d+º ano do Ensino Fundamental) – (.+)/);
             if (match) {
                 currentAno = match[1];
-                currentComponente = match[2];
+                currentComponente = match[2].trim();
+                
+                console.log(`🔍 Detectado: ${currentCiclo} | ${currentAno} | ${currentComponente}`);
                 
                 if (currentCiclo && !data[currentCiclo][currentAno]) {
                     data[currentCiclo][currentAno] = {};
@@ -795,12 +815,18 @@ function parseTxtData(txtContent) {
                 if (nextLine) {
                     const dataMatch = nextLine.match(/Defasagem: ([\d.]+)% \| Intermediário: ([\d.]+)% \| Adequado: ([\d.]+)% \| Média Geral: ([\d.]+)%/);
                     if (dataMatch) {
-                        data[currentCiclo][currentAno][currentComponente][schoolName] = {
+                        const schoolData = {
                             defasagem: parseFloat(dataMatch[1]),
                             intermediario: parseFloat(dataMatch[2]),
                             adequado: parseFloat(dataMatch[3]),
                             media: parseFloat(dataMatch[4])
                         };
+                        
+                        data[currentCiclo][currentAno][currentComponente][schoolName] = schoolData;
+                        
+                        console.log(`📍 ${schoolName}: Def:${schoolData.defasagem}% Int:${schoolData.intermediario}% Adeq:${schoolData.adequado}%`);
+                    } else {
+                        console.warn('⚠️ Dados não encontrados na linha:', nextLine);
                     }
                 }
             }
