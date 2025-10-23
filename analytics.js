@@ -49,104 +49,171 @@ function simulateCyclePerformance(cicloIIICards, variationFactor = 0.8) {
     };
 }
 
-// Função para carregar dados do YAML
+// Função para carregar dados do YAML (mesma do dashboard)
 async function loadYAMLData() {
     try {
-        const response = await fetch('CICLO_III_2025.yaml');
+        const response = await fetch('CICLO_III_2025.yaml', {
+            cache: 'no-cache'
+        });
+        
         const yamlText = await response.text();
         yamlData = jsyaml.load(yamlText);
         
+        console.log('📄 Dados carregados na análise:', yamlData);
+        
         populateFilters();
-        // Aplicar filtros pré-selecionados como no dashboard
-        setDefaultFilters();
-        updateAnalytics();
+        
+        // Aguardar um momento para os selects serem populados
+        setTimeout(() => {
+            setDefaultFilters();
+            updateAnalytics();
+        }, 200);
+        
     } catch (error) {
-        console.error('Erro ao carregar dados YAML:', error);
+        console.error('❌ Erro ao carregar dados:', error);
         showErrorMessage();
     }
 }
 
 // Função para popular os filtros (mesma lógica do dashboard)
 function populateFilters() {
-    if (!yamlData || !yamlData.ciclo_iii || !yamlData.ciclo_iii.data) return;
+    if (!yamlData || yamlData.length === 0) return;
     
-    const data = yamlData.ciclo_iii.data;
+    console.log('📊 Populando filtros com dados:', yamlData);
     
-    // Popular avaliações
-    const avaliacoes = [...new Set(data.map(item => item.avaliacao))];
+    // Popular avaliações - usar a mesma estrutura do dashboard
+    const avaliacoes = [...new Set(yamlData.map(item => item.filtros.avaliacao))];
     const avaliacaoSelect = document.getElementById('avaliacao');
     avaliacaoSelect.innerHTML = '<option value="">Selecione uma avaliação</option>';
     avaliacoes.forEach(avaliacao => {
-        avaliacaoSelect.innerHTML += `<option value="${avaliacao}">${avaliacao}</option>`;
+        const option = document.createElement('option');
+        option.value = avaliacao;
+        option.textContent = avaliacao;
+        avaliacaoSelect.appendChild(option);
     });
     
     // Popular anos
-    const anos = [...new Set(data.map(item => item.ano))].sort();
+    const anos = [...new Set(yamlData.map(item => item.filtros.ano_escolar))];
     const anoSelect = document.getElementById('ano-escolar');
     anoSelect.innerHTML = '<option value="">Selecione o ano</option>';
     anos.forEach(ano => {
-        anoSelect.innerHTML += `<option value="${ano}">${ano}º ano do Ensino Fundamental</option>`;
+        const option = document.createElement('option');
+        option.value = ano;
+        option.textContent = ano;
+        anoSelect.appendChild(option);
     });
     
     // Popular componentes
-    const componentes = [...new Set(data.map(item => item.componente_curricular))];
+    const componentes = [...new Set(yamlData.map(item => item.filtros.componente_curricular))];
     const componenteSelect = document.getElementById('componente');
     componenteSelect.innerHTML = '<option value="">Selecione o componente</option>';
     componentes.forEach(componente => {
-        componenteSelect.innerHTML += `<option value="${componente}">${componente}</option>`;
+        const option = document.createElement('option');
+        option.value = componente;
+        option.textContent = componente;
+        componenteSelect.appendChild(option);
     });
     
     // Popular redes
-    const redes = [...new Set(data.map(item => item.rede))];
+    const redes = [...new Set(yamlData.map(item => item.filtros.rede))];
     const redeSelect = document.getElementById('rede');
     redeSelect.innerHTML = '<option value="">Selecione a rede</option>';
     redes.forEach(rede => {
-        redeSelect.innerHTML += `<option value="${rede}">${rede}</option>`;
+        const option = document.createElement('option');
+        option.value = rede;
+        option.textContent = rede;
+        redeSelect.appendChild(option);
     });
     
-    // Popular escolas
-    const escolas = [...new Set(data.map(item => item.escola))];
+    // Popular escolas (será populado quando outros filtros forem selecionados)
     const escolaSelect = document.getElementById('escola');
     escolaSelect.innerHTML = '<option value="">Selecione a escola</option><option value="geral">📊 Média Geral</option>';
-    escolas.forEach(escola => {
-        escolaSelect.innerHTML += `<option value="${escola}">${escola}</option>`;
+    
+    console.log('✅ Filtros populados:', {
+        avaliacoes: avaliacoes.length,
+        anos: anos.length,
+        componentes: componentes.length,
+        redes: redes.length
     });
 }
 
 // Função para aplicar filtros padrão (igual ao dashboard)
 function setDefaultFilters() {
-    // Pré-selecionar 6º ano
+    console.log('🎯 Aplicando filtros padrão...');
+    
+    const defaultValues = {
+        avaliacao: 'Avaliação Contínua da Aprendizagem - Ciclo III / 2025',
+        anoEscolar: '6º ano do Ensino Fundamental',
+        componente: 'Língua Portuguesa (Leitura)',
+        rede: 'Pública',
+        escola: 'geral',
+        performance: 'all'
+    };
+    
+    let filtersApplied = 0;
+    
+    // Aplicar avaliação
+    const avaliacaoSelect = document.getElementById('avaliacao');
+    for (let option of avaliacaoSelect.options) {
+        if (option.value === defaultValues.avaliacao) {
+            option.selected = true;
+            filtersApplied++;
+            break;
+        }
+    }
+    
+    // Aplicar ano escolar
     const anoSelect = document.getElementById('ano-escolar');
     for (let option of anoSelect.options) {
-        if (option.value === '6') {
+        if (option.value === defaultValues.anoEscolar) {
             option.selected = true;
+            filtersApplied++;
             break;
         }
     }
     
-    // Pré-selecionar Língua Portuguesa
+    // Aplicar componente
     const componenteSelect = document.getElementById('componente');
     for (let option of componenteSelect.options) {
-        if (option.text.includes('Língua Portuguesa')) {
+        if (option.value === defaultValues.componente) {
             option.selected = true;
+            filtersApplied++;
             break;
         }
     }
     
-    // Pré-selecionar Rede Pública
+    // Aplicar rede
     const redeSelect = document.getElementById('rede');
     for (let option of redeSelect.options) {
-        if (option.value.toLowerCase().includes('públ')) {
+        if (option.value === defaultValues.rede) {
             option.selected = true;
+            filtersApplied++;
             break;
         }
     }
+    
+    // Aplicar escola
+    const escolaSelect = document.getElementById('escola');
+    for (let option of escolaSelect.options) {
+        if (option.value === defaultValues.escola) {
+            option.selected = true;
+            filtersApplied++;
+            break;
+        }
+    }
+    
+    // Aplicar faixa de performance
+    const performanceSelect = document.getElementById('performance-range');
+    performanceSelect.value = defaultValues.performance;
+    filtersApplied++;
+    
+    console.log(`📊 Filtros aplicados: ${filtersApplied}/6`);
 }
 
 // Função para filtrar dados baseado nos filtros selecionados
 function getFilteredData() {
-    if (!yamlData || !yamlData.ciclo_iii || !yamlData.ciclo_iii.data) {
-        return [];
+    if (!yamlData || yamlData.length === 0) {
+        return null;
     }
     
     const avaliacao = document.getElementById('avaliacao').value;
@@ -154,35 +221,35 @@ function getFilteredData() {
     const componente = document.getElementById('componente').value;
     const rede = document.getElementById('rede').value;
     const escola = document.getElementById('escola').value;
-    const performanceRange = document.getElementById('performance-range').value;
     
-    let filteredData = yamlData.ciclo_iii.data;
+    // Encontrar o item que corresponde aos filtros básicos
+    const filteredItem = yamlData.find(item => {
+        const filters = item.filtros;
+        return filters.avaliacao === avaliacao &&
+               filters.ano_escolar === ano &&
+               filters.componente_curricular === componente &&
+               filters.rede === rede;
+    });
     
-    // Aplicar filtros
-    if (avaliacao) {
-        filteredData = filteredData.filter(item => item.avaliacao === avaliacao);
+    if (!filteredItem) {
+        return null;
     }
-    if (ano) {
-        filteredData = filteredData.filter(item => item.ano.toString() === ano);
-    }
-    if (componente) {
-        filteredData = filteredData.filter(item => item.componente_curricular === componente);
-    }
-    if (rede) {
-        filteredData = filteredData.filter(item => item.rede === rede);
-    }
+    
+    // Se escola específica for selecionada, filtrar por escola
     if (escola && escola !== 'geral') {
-        filteredData = filteredData.filter(item => item.escola === escola);
+        const escolaData = filteredItem.escolas.find(e => e.escola === escola);
+        return escolaData ? [escolaData] : [];
     }
     
-    return filteredData;
+    // Se "Média Geral" ou nenhuma escola específica, retornar todas as escolas
+    return filteredItem.escolas || [];
 }
 
 // Função para calcular performance baseada nas habilidades (igual ao dashboard)
 function calculateSkillsPerformance() {
     const filteredData = getFilteredData();
     
-    if (filteredData.length === 0) {
+    if (!filteredData || filteredData.length === 0) {
         return { adequado: 0, intermediario: 0, defasagem: 0, total: 0 };
     }
     
@@ -191,13 +258,13 @@ function calculateSkillsPerformance() {
     let defasagem = 0; // Até 40%
     let total = 0;
     
-    // Processar cada item de dados
-    filteredData.forEach(item => {
-        const competencias = item.competencias || {};
+    // Processar cada escola
+    filteredData.forEach(escola => {
+        const habilidades = escola.habilidades || [];
         
-        Object.values(competencias).forEach(competencia => {
-            if (competencia && competencia.percentual_acerto !== undefined) {
-                const performance = parseFloat(competencia.percentual_acerto);
+        habilidades.forEach(habilidade => {
+            if (habilidade && habilidade.percentual_acerto !== undefined) {
+                const performance = parseFloat(habilidade.percentual_acerto);
                 total++;
                 
                 if (performance > 80) {
