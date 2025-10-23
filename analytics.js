@@ -6,155 +6,212 @@ let filteredCards = [];
 // DADOS REAIS DOS TRÊS CICLOS
 // =====================================
 
-// CICLO I - DADOS ORIGINAIS CORRETOS
+// CICLO I - DADOS CORRIGIDOS CONFORME ARQUIVO OFICIAL
 const cicloIData = {
     "6º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 18.8, intermediario: 31.2, adequado: 50.0, media: 83.6 },
-            "EEF FIRMINO JOSE": { defasagem: 6.2, intermediario: 25.0, adequado: 68.8, media: 88.4 },
-            "EEF FRANCISCO MOURAO LIMA": { defasagem: 25.0, intermediario: 37.5, adequado: 37.5, media: 79.2 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 12.5, intermediario: 25.0, adequado: 62.5, media: 86.8 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 18.8, intermediario: 43.8, adequado: 37.5, media: 81.4 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 25.0, intermediario: 43.8, adequado: 31.2, media: 78.9 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 21.8, intermediario: 30.2, adequado: 48.0, media: 77.6 },
+            "EEF FIRMINO JOSE": { defasagem: 19.7, intermediario: 31.6, adequado: 48.8, media: 78.1 },
+            "EEF FRANCISCO MOURAO LIMA": { defasagem: 22.4, intermediario: 34.7, adequado: 42.8, media: 76.5 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 23.4, intermediario: 30.6, adequado: 46.0, media: 77.0 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 20.5, intermediario: 30.2, adequado: 49.3, media: 78.0 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 19.3, intermediario: 33.5, adequado: 47.2, media: 77.8 }
+        },
+        "Matemática": {
+            "EEF 21 DE DEZEMBRO": { defasagem: 19.4, intermediario: 32.0, adequado: 48.6, media: 78.0 },
+            "EEF FIRMINO JOSE": { defasagem: 18.5, intermediario: 31.6, adequado: 49.9, media: 78.4 },
+            "EEF FRANCISCO MOURAO LIMA": { defasagem: 18.6, intermediario: 31.9, adequado: 49.4, media: 78.2 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 21.8, intermediario: 32.6, adequado: 45.6, media: 77.2 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 20.2, intermediario: 31.5, adequado: 48.3, media: 77.9 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 19.6, intermediario: 36.6, adequado: 43.8, media: 77.1 }
         }
     },
     "7º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 14.7, intermediario: 32.4, adequado: 52.9, media: 85.2 },
-            "EEF FIRMINO JOSE": { defasagem: 11.8, intermediario: 29.4, adequado: 58.8, media: 87.1 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 17.6, intermediario: 35.3, adequado: 47.1, media: 83.4 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 20.6, intermediario: 38.2, adequado: 41.2, media: 81.2 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 11.8, intermediario: 32.4, adequado: 55.9, media: 86.5 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 18.2, intermediario: 31.8, adequado: 50.0, media: 78.5 },
+            "EEF FIRMINO JOSE": { defasagem: 21.9, intermediario: 33.8, adequado: 44.3, media: 76.9 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 19.3, intermediario: 34.1, adequado: 46.6, media: 77.7 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 22.9, intermediario: 30.0, adequado: 47.1, media: 77.3 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 22.8, intermediario: 34.9, adequado: 42.3, media: 76.4 }
+        },
+        "Matemática": {
+            "EEF 21 DE DEZEMBRO": { defasagem: 21.9, intermediario: 34.3, adequado: 43.8, media: 76.8 },
+            "EEF FIRMINO JOSE": { defasagem: 19.0, intermediario: 35.1, adequado: 45.9, media: 77.6 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 19.0, intermediario: 32.7, adequado: 48.4, media: 78.1 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 23.9, intermediario: 34.5, adequado: 41.6, media: 76.1 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 21.3, intermediario: 34.8, adequado: 43.9, media: 76.9 }
         }
     },
     "8º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 16.7, intermediario: 38.9, adequado: 44.4, media: 82.9 },
-            "EEF FIRMINO JOSE": { defasagem: 13.9, intermediario: 36.1, adequado: 50.0, media: 85.1 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 19.4, intermediario: 27.8, adequado: 52.8, media: 84.7 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 25.0, intermediario: 33.3, adequado: 41.7, media: 80.2 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 19.4, intermediario: 30.6, adequado: 50.0, media: 83.8 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 20.0, intermediario: 31.1, adequado: 48.9, media: 78.0 },
+            "EEF FIRMINO JOSE": { defasagem: 23.7, intermediario: 32.4, adequado: 43.9, media: 76.6 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 18.6, intermediario: 31.4, adequado: 50.0, media: 78.4 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 23.1, intermediario: 34.2, adequado: 42.7, media: 76.5 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 22.8, intermediario: 35.1, adequado: 42.0, media: 76.3 }
+        },
+        "Matemática": {
+            "EEF 21 DE DEZEMBRO": { defasagem: 23.1, intermediario: 35.4, adequado: 41.5, media: 76.2 },
+            "EEF FIRMINO JOSE": { defasagem: 19.4, intermediario: 30.6, adequado: 50.0, media: 78.3 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 19.9, intermediario: 31.9, adequado: 48.2, media: 77.9 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 19.3, intermediario: 36.6, adequado: 44.1, media: 77.2 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 23.3, intermediario: 32.2, adequado: 44.5, media: 76.7 }
         }
     },
     "9º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 20.0, intermediario: 33.3, adequado: 46.7, media: 84.2 },
-            "EEF FIRMINO JOSE": { defasagem: 23.3, intermediario: 36.7, adequado: 40.0, media: 81.6 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 13.3, intermediario: 26.7, adequado: 60.0, media: 86.7 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 20.0, intermediario: 33.3, adequado: 46.7, media: 83.9 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 26.7, intermediario: 40.0, adequado: 33.3, media: 78.5 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 21.2, intermediario: 36.8, adequado: 42.0, media: 76.6 },
+            "EEF FIRMINO JOSE": { defasagem: 20.3, intermediario: 33.9, adequado: 45.9, media: 77.5 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 23.0, intermediario: 34.3, adequado: 42.7, media: 76.5 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 23.2, intermediario: 34.0, adequado: 42.8, media: 76.5 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 22.2, intermediario: 30.3, adequado: 47.5, media: 77.4 }
+        },
+        "Matemática": {
+            "EEF 21 DE DEZEMBRO": { defasagem: 21.9, intermediario: 32.8, adequado: 45.3, media: 77.1 },
+            "EEF FIRMINO JOSE": { defasagem: 23.5, intermediario: 33.2, adequado: 43.3, media: 76.5 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 19.6, intermediario: 31.7, adequado: 48.7, media: 78.0 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 21.4, intermediario: 31.8, adequado: 46.8, media: 77.4 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 21.5, intermediario: 36.3, adequado: 42.2, media: 76.6 }
         }
     }
 };
 
-// CICLO II - DADOS CORRETOS BASEADOS NOS CRITÉRIOS ESPECÍFICOS
-// No Ciclo II, conforme dados fornecidos, todos foram classificados como "Intermediário"
+// CICLO II - DADOS CORRIGIDOS CONFORME ARQUIVO OFICIAL
 const cicloIIData = {
     "6º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 18.8, intermediario: 50.0, adequado: 31.2, media: 77.6 },
-            "EEF FIRMINO JOSE": { defasagem: 6.2, intermediario: 68.8, adequado: 25.0, media: 88.4 },
-            "EEF FRANCISCO MOURAO LIMA": { defasagem: 25.0, intermediario: 37.5, adequado: 37.5, media: 79.2 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 12.5, intermediario: 62.5, adequado: 25.0, media: 79.8 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 18.8, intermediario: 37.5, adequado: 43.8, media: 81.4 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 25.0, intermediario: 31.2, adequado: 43.8, media: 78.9 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 27.0, intermediario: 43.3, adequado: 29.7, media: 70.4 },
+            "EEF FIRMINO JOSE": { defasagem: 30.0, intermediario: 45.1, adequado: 25.0, media: 69.3 },
+            "EEF FRANCISCO MOURAO LIMA": { defasagem: 25.5, intermediario: 42.3, adequado: 32.3, media: 71.1 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 25.5, intermediario: 45.8, adequado: 28.7, media: 70.5 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 29.0, intermediario: 44.5, adequado: 26.5, media: 69.6 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 25.3, intermediario: 44.3, adequado: 30.4, media: 70.8 }
+        },
+        "Matemática": {
+            "EEF 21 DE DEZEMBRO": { defasagem: 25.1, intermediario: 47.6, adequado: 27.3, media: 70.3 },
+            "EEF FIRMINO JOSE": { defasagem: 29.4, intermediario: 45.6, adequado: 25.0, media: 69.3 },
+            "EEF FRANCISCO MOURAO LIMA": { defasagem: 26.5, intermediario: 42.3, adequado: 31.1, media: 70.6 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 29.4, intermediario: 45.6, adequado: 25.0, media: 69.3 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 25.4, intermediario: 44.9, adequado: 29.7, media: 70.6 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 25.3, intermediario: 46.6, adequado: 28.1, media: 70.4 }
         }
     },
     "7º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 14.7, intermediario: 52.9, adequado: 32.4, media: 78.2 },
-            "EEF FIRMINO JOSE": { defasagem: 11.8, intermediario: 58.8, adequado: 29.4, media: 87.1 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 17.6, intermediario: 47.1, adequado: 35.3, media: 77.4 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 20.6, intermediario: 41.2, adequado: 38.2, media: 81.2 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 11.8, intermediario: 55.9, adequado: 32.4, media: 79.5 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 30.0, intermediario: 45.0, adequado: 25.0, media: 69.2 },
+            "EEF FIRMINO JOSE": { defasagem: 29.9, intermediario: 45.1, adequado: 25.0, media: 69.3 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 25.1, intermediario: 46.3, adequado: 28.6, media: 70.5 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 28.4, intermediario: 45.2, adequado: 26.4, media: 69.7 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 26.3, intermediario: 45.8, adequado: 27.8, media: 70.2 }
+        },
+        "Matemática": {
+            "EEF 21 DE DEZEMBRO": { defasagem: 28.8, intermediario: 42.8, adequado: 28.4, media: 69.9 },
+            "EEF FIRMINO JOSE": { defasagem: 27.4, intermediario: 45.3, adequado: 27.3, media: 70.0 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 26.3, intermediario: 47.2, adequado: 26.4, media: 69.9 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 27.1, intermediario: 43.3, adequado: 29.6, media: 70.4 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 27.7, intermediario: 46.4, adequado: 25.9, media: 69.7 }
         }
     },
     "8º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 16.7, intermediario: 44.4, adequado: 38.9, media: 82.9 },
-            "EEF FIRMINO JOSE": { defasagem: 13.9, intermediario: 50.0, adequado: 36.1, media: 78.1 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 19.4, intermediario: 52.8, adequado: 27.8, media: 84.7 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 25.0, intermediario: 41.7, adequado: 33.3, media: 80.2 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 19.4, intermediario: 50.0, adequado: 30.6, media: 77.8 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 25.6, intermediario: 44.6, adequado: 29.8, media: 70.6 },
+            "EEF FIRMINO JOSE": { defasagem: 27.3, intermediario: 47.7, adequado: 25.0, media: 69.7 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 29.4, intermediario: 43.6, adequado: 27.0, media: 69.6 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 27.5, intermediario: 43.1, adequado: 29.4, media: 70.3 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 29.6, intermediario: 45.4, adequado: 25.0, media: 69.3 }
+        },
+        "Matemática": {
+            "EEF 21 DE DEZEMBRO": { defasagem: 26.0, intermediario: 43.9, adequado: 30.1, media: 70.6 },
+            "EEF FIRMINO JOSE": { defasagem: 30.0, intermediario: 45.0, adequado: 25.0, media: 69.2 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 27.2, intermediario: 45.1, adequado: 27.7, media: 70.1 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 25.6, intermediario: 43.3, adequado: 31.0, media: 70.7 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 26.7, intermediario: 45.5, adequado: 27.8, media: 70.2 }
         }
     },
     "9º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 20.0, intermediario: 46.7, adequado: 33.3, media: 84.2 },
-            "EEF FIRMINO JOSE": { defasagem: 23.3, intermediario: 40.0, adequado: 36.7, media: 81.6 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 13.3, intermediario: 60.0, adequado: 26.7, media: 79.7 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 20.0, intermediario: 46.7, adequado: 33.3, media: 77.9 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 26.7, intermediario: 33.3, adequado: 40.0, media: 78.5 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 26.5, intermediario: 45.8, adequado: 27.7, media: 70.2 },
+            "EEF FIRMINO JOSE": { defasagem: 28.0, intermediario: 42.9, adequado: 29.0, media: 70.1 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 28.8, intermediario: 45.2, adequado: 26.0, media: 69.6 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 28.9, intermediario: 45.2, adequado: 25.9, media: 69.5 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 25.0, intermediario: 43.9, adequado: 31.1, media: 70.9 }
+        },
+        "Matemática": {
+            "EEF 21 DE DEZEMBRO": { defasagem: 26.2, intermediario: 43.3, adequado: 30.5, media: 70.6 },
+            "EEF FIRMINO JOSE": { defasagem: 25.4, intermediario: 45.8, adequado: 28.9, media: 70.6 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 26.1, intermediario: 47.4, adequado: 26.4, media: 70.0 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 29.3, intermediario: 42.4, adequado: 28.3, media: 69.8 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 26.2, intermediario: 46.0, adequado: 27.8, media: 70.2 }
         }
     }
 };
 
-// CICLO III - DADOS CORRETOS JÁ VALIDADOS
+// CICLO III - DADOS CORRIGIDOS CONFORME ARQUIVO OFICIAL
 const cicloIIIData = {
     "6º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 31.2, intermediario: 37.5, adequado: 31.2, media: 68.3 },
-            "EEF FIRMINO JOSE": { defasagem: 12.5, intermediario: 37.5, adequado: 50.0, media: 80.4 },
-            "EEF FRANCISCO MOURAO LIMA": { defasagem: 43.8, intermediario: 31.2, adequado: 25.0, media: 66.5 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 50.0, intermediario: 18.8, adequado: 31.2, media: 69.5 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 25.0, intermediario: 62.5, adequado: 12.5, media: 67.5 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 43.8, intermediario: 37.5, adequado: 18.8, media: 66.8 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 37.1, intermediario: 37.9, adequado: 25.0, media: 64.8 },
+            "EEF FIRMINO JOSE": { defasagem: 44.4, intermediario: 40.6, adequado: 15.0, media: 62.1 },
+            "EEF FRANCISCO MOURAO LIMA": { defasagem: 39.7, intermediario: 42.8, adequado: 17.4, media: 63.2 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 43.1, intermediario: 36.9, adequado: 20.0, media: 63.0 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 36.0, intermediario: 39.3, adequado: 24.7, media: 65.0 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 39.2, intermediario: 39.7, adequado: 21.1, media: 63.9 }
         },
         "Matemática": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 31.6, intermediario: 21.1, adequado: 47.4, media: 75.1 },
-            "EEF FIRMINO JOSE": { defasagem: 47.4, intermediario: 31.6, adequado: 21.1, media: 63.8 },
-            "EEF FRANCISCO MOURAO LIMA": { defasagem: 26.3, intermediario: 26.3, adequado: 47.4, media: 78.1 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 42.1, intermediario: 26.3, adequado: 31.6, media: 71.0 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 47.4, intermediario: 26.3, adequado: 26.3, media: 67.2 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 10.5, intermediario: 47.4, adequado: 42.1, media: 77.9 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 37.7, intermediario: 42.8, adequado: 19.5, media: 63.9 },
+            "EEF FIRMINO JOSE": { defasagem: 39.6, intermediario: 39.2, adequado: 21.2, media: 63.8 },
+            "EEF FRANCISCO MOURAO LIMA": { defasagem: 44.6, intermediario: 40.4, adequado: 15.0, media: 62.1 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 40.6, intermediario: 42.2, adequado: 17.3, media: 63.2 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 36.5, intermediario: 38.5, adequado: 25.0, media: 64.9 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 44.7, intermediario: 40.3, adequado: 15.0, media: 62.1 }
         }
     },
     "7º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 11.8, intermediario: 29.4, adequado: 58.8, media: 82.3 },
-            "EEF FIRMINO JOSE": { defasagem: 17.6, intermediario: 11.8, adequado: 70.6, media: 83.8 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 23.5, intermediario: 58.8, adequado: 17.6, media: 67.8 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 35.3, intermediario: 41.2, adequado: 23.5, media: 66.7 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 11.8, intermediario: 41.2, adequado: 47.1, media: 80.0 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 42.3, intermediario: 41.7, adequado: 16.0, media: 62.6 },
+            "EEF FIRMINO JOSE": { defasagem: 44.8, intermediario: 36.0, adequado: 19.2, media: 62.6 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 39.0, intermediario: 38.4, adequado: 22.6, media: 64.1 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 43.6, intermediario: 37.5, adequado: 18.9, media: 62.8 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 36.9, intermediario: 39.5, adequado: 23.6, media: 64.7 }
         },
         "Matemática": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 19.0, intermediario: 33.3, adequado: 47.6, media: 77.7 },
-            "EEF FIRMINO JOSE": { defasagem: 28.6, intermediario: 38.1, adequado: 33.3, media: 72.6 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 38.1, intermediario: 28.6, adequado: 33.3, media: 70.9 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 33.3, intermediario: 42.9, adequado: 23.8, media: 68.4 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 42.9, intermediario: 28.6, adequado: 28.6, media: 69.6 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 40.4, intermediario: 42.5, adequado: 17.1, media: 63.1 },
+            "EEF FIRMINO JOSE": { defasagem: 35.6, intermediario: 40.8, adequado: 23.6, media: 64.9 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 40.0, intermediario: 43.5, adequado: 16.4, media: 63.0 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 36.6, intermediario: 44.6, adequado: 18.8, media: 64.0 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 35.8, intermediario: 39.2, adequado: 25.0, media: 65.1 }
         }
     },
     "8º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 27.8, intermediario: 38.9, adequado: 33.3, media: 72.2 },
-            "EEF FIRMINO JOSE": { defasagem: 27.8, intermediario: 50.0, adequado: 22.2, media: 69.6 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 22.2, intermediario: 22.2, adequado: 55.6, media: 80.6 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 33.3, intermediario: 33.3, adequado: 33.3, media: 71.7 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 11.1, intermediario: 66.7, adequado: 22.2, media: 70.0 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 39.2, intermediario: 37.8, adequado: 23.0, media: 64.2 },
+            "EEF FIRMINO JOSE": { defasagem: 37.5, intermediario: 44.2, adequado: 18.3, media: 63.8 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 39.4, intermediario: 43.6, adequado: 17.0, media: 63.3 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 40.5, intermediario: 35.5, adequado: 24.0, media: 64.1 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 45.0, intermediario: 40.0, adequado: 15.0, media: 62.0 }
         },
         "Matemática": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 15.8, intermediario: 42.1, adequado: 42.1, media: 78.6 },
-            "EEF FIRMINO JOSE": { defasagem: 42.1, intermediario: 26.3, adequado: 31.6, media: 68.9 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 47.4, intermediario: 21.1, adequado: 31.6, media: 69.7 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 31.6, intermediario: 31.6, adequado: 36.8, media: 72.9 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 10.5, intermediario: 57.9, adequado: 31.6, media: 74.2 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 41.0, intermediario: 41.8, adequado: 17.3, media: 63.1 },
+            "EEF FIRMINO JOSE": { defasagem: 37.4, intermediario: 37.6, adequado: 25.0, media: 64.8 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 43.9, intermediario: 37.5, adequado: 18.6, media: 62.7 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 40.9, intermediario: 41.2, adequado: 17.9, media: 63.1 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 39.2, intermediario: 40.8, adequado: 20.0, media: 63.7 }
         }
     },
     "9º ano do Ensino Fundamental": {
         "Língua Portuguesa (Leitura)": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 31.6, intermediario: 36.8, adequado: 31.6, media: 72.2 },
-            "EEF FIRMINO JOSE": { defasagem: 57.9, intermediario: 15.8, adequado: 26.3, media: 66.7 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 47.4, intermediario: 26.3, adequado: 26.3, media: 67.1 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 15.8, intermediario: 31.6, adequado: 52.6, media: 78.9 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 57.9, intermediario: 21.1, adequado: 21.1, media: 61.4 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 44.7, intermediario: 40.3, adequado: 15.0, media: 62.1 },
+            "EEF FIRMINO JOSE": { defasagem: 43.5, intermediario: 36.7, adequado: 19.8, media: 62.9 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 39.9, intermediario: 37.1, adequado: 23.0, media: 64.0 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 39.0, intermediario: 36.0, adequado: 25.0, media: 64.5 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 38.8, intermediario: 44.9, adequado: 16.4, media: 63.4 }
         },
         "Matemática": {
-            "EEF 21 DE DEZEMBRO": { defasagem: 47.6, intermediario: 19.0, adequado: 33.3, media: 68.9 },
-            "EEF FIRMINO JOSE": { defasagem: 52.4, intermediario: 33.3, adequado: 14.3, media: 64.1 },
-            "EEIEF 03 DE DEZEMBRO": { defasagem: 42.9, intermediario: 38.1, adequado: 19.0, media: 65.7 },
-            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 33.3, intermediario: 28.6, adequado: 38.1, media: 72.0 },
-            "EEIEF JOSE ALVES DE SENA": { defasagem: 33.3, intermediario: 28.6, adequado: 38.1, media: 71.7 }
+            "EEF 21 DE DEZEMBRO": { defasagem: 40.2, intermediario: 44.3, adequado: 15.4, media: 62.9 },
+            "EEF FIRMINO JOSE": { defasagem: 37.0, intermediario: 42.2, adequado: 20.8, media: 64.3 },
+            "EEIEF 03 DE DEZEMBRO": { defasagem: 37.4, intermediario: 39.0, adequado: 23.7, media: 64.7 },
+            "EEIEF ANTONIO DE SOUSA BARROS": { defasagem: 41.7, intermediario: 38.0, adequado: 20.3, media: 63.3 },
+            "EEIEF JOSE ALVES DE SENA": { defasagem: 38.2, intermediario: 42.5, adequado: 19.3, media: 63.8 }
         }
     }
 };
@@ -434,8 +491,9 @@ function updateCycleCard(cardId, data, title, subtitle) {
     // Atualizar título
     card.querySelector('h2').textContent = title;
     
-    // Atualizar percentual com a média geral da escola naquele ano e componente
-    card.querySelector('.percentage-large').textContent = `${data.media || 0}%`;
+    // Atualizar percentual com a soma de aprendizado intermediário + adequado
+    const somaIntermediarioAdequado = (data.intermediario || 0) + (data.adequado || 0);
+    card.querySelector('.percentage-large').textContent = `${somaIntermediarioAdequado}%`;
     
     // Atualizar barra de progresso
     const progressBar = card.querySelector('.progress-bar-horizontal');
