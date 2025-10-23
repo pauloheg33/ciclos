@@ -14,29 +14,48 @@
             <div class="top-filters">
                 <div class="filter-row">
                     <div class="filter-group">
-                        <label>Avaliação</label>
-                        <select id="avaliacao-filter">
-                            <option>Avaliação Contínua da Aprendizagem - Ciclo I / 2025</option>
+                        <label>📋 Avaliação</label>
+                        <select id="avaliacao">
+                            <option value="">Selecione uma avaliação</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label>Ano escolar</label>
-                        <select id="ano-filter">
-                            <option value="">7º ano do Ensino Fundamental</option>
+                        <label>🎓 Ano escolar</label>
+                        <select id="ano-escolar">
+                            <option value="">Selecione o ano</option>
                         </select>
                     </div>
                 </div>
                 <div class="filter-row">
                     <div class="filter-group">
-                        <label>Componente curricular</label>
-                        <select id="componente-filter">
-                            <option value="">Língua Portuguesa (Leitura)</option>
+                        <label>📚 Componente curricular</label>
+                        <select id="componente">
+                            <option value="">Selecione o componente</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label>Rede</label>
-                        <select id="rede-filter">
-                            <option>Pública</option>
+                        <label>🏛️ Rede</label>
+                        <select id="rede">
+                            <option value="">Selecione a rede</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label>🏫 Escola</label>
+                        <select id="escola">
+                            <option value="">Selecione a escola</option>
+                            <option value="geral">📊 Média Geral</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>📈 Faixa de desempenho</label>
+                        <select id="performance-range">
+                            <option value="all">Todas as faixas</option>
+                            <option value="0-40">🔴 Até 40%</option>
+                            <option value="41-60">🟠 De 41% a 60%</option>
+                            <option value="61-80">🔵 De 61% a 80%</option>
+                            <option value="81-100">🟢 Acima de 80%</option>
                         </select>
                     </div>
                 </div>
@@ -48,36 +67,33 @@
                     <h2>2025 - Ciclo I</h2>
                     <div class="cycle-main">
                         <div class="adequado-section">
-                            <span class="adequado-label">Estudantes com aprendizagem adequada</span>
-                            <div class="percentage-large">98%</div>
+                            <span class="adequado-label">Habilidades com desempenho adequado</span>
+                            <div class="percentage-large">0%</div>
                         </div>
                     </div>
                     
                     <div class="distribution-section">
-                        <h4>Distribuição dos estudantes por níveis de aprendizagem</h4>
+                        <h4>Distribuição das habilidades por níveis de desempenho</h4>
                         <div class="progress-bar-horizontal">
-                            <div class="segment defasagem" style="width: 1%"></div>
-                            <div class="segment intermediario" style="width: 2%"></div>
-                            <div class="segment adequado" style="width: 98%"></div>
+                            <div class="segment defasagem" style="width: 0%"></div>
+                            <div class="segment intermediario" style="width: 0%"></div>
+                            <div class="segment adequado" style="width: 0%"></div>
                         </div>
                         <div class="legend-list">
                             <div class="legend-item">
                                 <span class="legend-dot defasagem"></span>
-                                <span class="legend-text">Defasagem</span>
-                                <span class="legend-count">1 estudantes</span>
-                                <span class="legend-percent">1%</span>
+                                <span class="legend-text">🔴 Até 40%</span>
+                                <span class="legend-percent">0%</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot intermediario"></span>
-                                <span class="legend-text">Aprendizado intermediário</span>
-                                <span class="legend-count">3 estudantes</span>
-                                <span class="legend-percent">2%</span>
+                                <span class="legend-text">🟠 De 41% a 60%</span>
+                                <span class="legend-percent">0%</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot adequado"></span>
-                                <span class="legend-text">Aprendizado adequado</span>
-                                <span class="legend-count">157 estudantes</span>
-                                <span class="legend-percent">98%</span>
+                                <span class="legend-text">🟢 Acima de 80%</span>
+                                <span class="legend-percent">0%</span>
                             </div>
                         </div>
                     </div>
@@ -87,36 +103,33 @@
                     <h2>2025 - Ciclo II</h2>
                     <div class="cycle-main">
                         <div class="adequado-section">
-                            <span class="adequado-label">Estudantes com aprendizagem adequada</span>
-                            <div class="percentage-large">98%</div>
+                            <span class="adequado-label">Habilidades com desempenho adequado</span>
+                            <div class="percentage-large">0%</div>
                         </div>
                     </div>
                     
                     <div class="distribution-section">
-                        <h4>Distribuição dos estudantes por níveis de aprendizagem</h4>
+                        <h4>Distribuição das habilidades por níveis de desempenho</h4>
                         <div class="progress-bar-horizontal">
-                            <div class="segment defasagem" style="width: 1%"></div>
-                            <div class="segment intermediario" style="width: 1%"></div>
-                            <div class="segment adequado" style="width: 98%"></div>
+                            <div class="segment defasagem" style="width: 0%"></div>
+                            <div class="segment intermediario" style="width: 0%"></div>
+                            <div class="segment adequado" style="width: 0%"></div>
                         </div>
                         <div class="legend-list">
                             <div class="legend-item">
                                 <span class="legend-dot defasagem"></span>
-                                <span class="legend-text">Defasagem</span>
-                                <span class="legend-count">2 estudantes</span>
-                                <span class="legend-percent">1%</span>
+                                <span class="legend-text">🔴 Até 40%</span>
+                                <span class="legend-percent">0%</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot intermediario"></span>
-                                <span class="legend-text">Aprendizado intermediário</span>
-                                <span class="legend-count">2 estudantes</span>
-                                <span class="legend-percent">1%</span>
+                                <span class="legend-text">🟠 De 41% a 60%</span>
+                                <span class="legend-percent">0%</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot adequado"></span>
-                                <span class="legend-text">Aprendizado adequado</span>
-                                <span class="legend-count">158 estudantes</span>
-                                <span class="legend-percent">98%</span>
+                                <span class="legend-text">🟢 Acima de 80%</span>
+                                <span class="legend-percent">0%</span>
                             </div>
                         </div>
                     </div>
@@ -126,36 +139,33 @@
                     <h2>2025 - Ciclo III</h2>
                     <div class="cycle-main">
                         <div class="adequado-section">
-                            <span class="adequado-label">Estudantes com aprendizagem adequada</span>
-                            <div class="percentage-large">97%</div>
+                            <span class="adequado-label">Habilidades com desempenho adequado</span>
+                            <div class="percentage-large">0%</div>
                         </div>
                     </div>
                     
                     <div class="distribution-section">
-                        <h4>Distribuição dos estudantes por níveis de aprendizagem</h4>
+                        <h4>Distribuição das habilidades por níveis de desempenho</h4>
                         <div class="progress-bar-horizontal">
-                            <div class="segment defasagem" style="width: 1%"></div>
-                            <div class="segment intermediario" style="width: 2%"></div>
-                            <div class="segment adequado" style="width: 97%"></div>
+                            <div class="segment defasagem" style="width: 0%"></div>
+                            <div class="segment intermediario" style="width: 0%"></div>
+                            <div class="segment adequado" style="width: 0%"></div>
                         </div>
                         <div class="legend-list">
                             <div class="legend-item">
                                 <span class="legend-dot defasagem"></span>
-                                <span class="legend-text">Defasagem</span>
-                                <span class="legend-count">1 estudantes</span>
-                                <span class="legend-percent">1%</span>
+                                <span class="legend-text">🔴 Até 40%</span>
+                                <span class="legend-percent">0%</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot intermediario"></span>
-                                <span class="legend-text">Aprendizado intermediário</span>
-                                <span class="legend-count">3 estudantes</span>
-                                <span class="legend-percent">2%</span>
+                                <span class="legend-text">🟠 De 41% a 60%</span>
+                                <span class="legend-percent">0%</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot adequado"></span>
-                                <span class="legend-text">Aprendizado adequado</span>
-                                <span class="legend-count">155 estudantes</span>
-                                <span class="legend-percent">97%</span>
+                                <span class="legend-text">🟢 Acima de 80%</span>
+                                <span class="legend-percent">0%</span>
                             </div>
                         </div>
                     </div>

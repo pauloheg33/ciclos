@@ -444,6 +444,10 @@ body {
     margin-bottom: 0;
 }
 
+.filter-row:nth-child(3) {
+    margin-top: 10px;
+}
+
 .filter-group {
     flex: 1;
     display: flex;
