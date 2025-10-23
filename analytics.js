@@ -2,6 +2,76 @@
 let yamlData = null;
 let filteredCards = [];
 
+// Mapeamento das escolas por ano e componente curricular
+const escolasPorFiltro = {
+    "6º ano do Ensino Fundamental": {
+        "Língua Portuguesa (Leitura)": [
+            "EEF 21 DE DEZEMBRO",
+            "EEF FIRMINO JOSE", 
+            "EEF FRANCISCO MOURAO LIMA",
+            "EEIEF 03 DE DEZEMBRO",
+            "EEIEF ANTONIO DE SOUSA BARROS",
+            "EEIEF JOSE ALVES DE SENA"
+        ],
+        "Matemática": [
+            "EEF 21 DE DEZEMBRO",
+            "EEF FIRMINO JOSE",
+            "EEF FRANCISCO MOURAO LIMA", 
+            "EEIEF 03 DE DEZEMBRO",
+            "EEIEF ANTONIO DE SOUSA BARROS",
+            "EEIEF JOSE ALVES DE SENA"
+        ]
+    },
+    "7º ano do Ensino Fundamental": {
+        "Língua Portuguesa (Leitura)": [
+            "EEF 21 DE DEZEMBRO",
+            "EEF FIRMINO JOSE",
+            "EEIEF 03 DE DEZEMBRO", 
+            "EEIEF ANTONIO DE SOUSA BARROS",
+            "EEIEF JOSE ALVES DE SENA"
+        ],
+        "Matemática": [
+            "EEF 21 DE DEZEMBRO",
+            "EEF FIRMINO JOSE",
+            "EEIEF 03 DE DEZEMBRO",
+            "EEIEF ANTONIO DE SOUSA BARROS", 
+            "EEIEF JOSE ALVES DE SENA"
+        ]
+    },
+    "8º ano do Ensino Fundamental": {
+        "Língua Portuguesa (Leitura)": [
+            "EEF 21 DE DEZEMBRO",
+            "EEF FIRMINO JOSE",
+            "EEIEF 03 DE DEZEMBRO",
+            "EEIEF ANTONIO DE SOUSA BARROS",
+            "EEIEF JOSE ALVES DE SENA"
+        ],
+        "Matemática": [
+            "EEF 21 DE DEZEMBRO", 
+            "EEF FIRMINO JOSE",
+            "EEIEF 03 DE DEZEMBRO",
+            "EEIEF ANTONIO DE SOUSA BARROS",
+            "EEIEF JOSE ALVES DE SENA"
+        ]
+    },
+    "9º ano do Ensino Fundamental": {
+        "Língua Portuguesa (Leitura)": [
+            "EEF 21 DE DEZEMBRO",
+            "EEF FIRMINO JOSE",
+            "EEIEF 03 DE DEZEMBRO",
+            "EEIEF ANTONIO DE SOUSA BARROS", 
+            "EEIEF JOSE ALVES DE SENA"
+        ],
+        "Matemática": [
+            "EEF 21 DE DEZEMBRO",
+            "EEF FIRMINO JOSE", 
+            "EEIEF 03 DE DEZEMBRO",
+            "EEIEF ANTONIO DE SOUSA BARROS",
+            "EEIEF JOSE ALVES DE SENA"
+        ]
+    }
+};
+
 // Simulação de dados de ciclos anteriores baseados em performance de habilidades
 const simulatedCycleData = {
     cicloI: {
@@ -126,8 +196,7 @@ function populateFilters() {
     });
     
     // Popular escolas (será populado quando outros filtros forem selecionados)
-    const escolaSelect = document.getElementById('escola');
-    escolaSelect.innerHTML = '<option value="">Selecione a escola</option><option value="geral">📊 Média Geral</option>';
+    updateEscolasFilter();
     
     console.log('✅ Filtros populados:', {
         avaliacoes: avaliacoes.length,
@@ -135,6 +204,47 @@ function populateFilters() {
         componentes: componentes.length,
         redes: redes.length
     });
+}
+
+// Função para atualizar o filtro de escolas baseado no ano e componente selecionados
+function updateEscolasFilter() {
+    const anoSelect = document.getElementById('ano-escolar');
+    const componenteSelect = document.getElementById('componente');
+    const escolaSelect = document.getElementById('escola');
+    
+    const anoSelecionado = anoSelect.value;
+    const componenteSelecionado = componenteSelect.value;
+    
+    // Limpar opções atuais
+    escolaSelect.innerHTML = '<option value="">Selecione a escola</option><option value="geral">📊 Média Geral</option>';
+    
+    // Se ano e componente estiverem selecionados, popular escolas específicas
+    if (anoSelecionado && componenteSelecionado && escolasPorFiltro[anoSelecionado] && escolasPorFiltro[anoSelecionado][componenteSelecionado]) {
+        const escolas = escolasPorFiltro[anoSelecionado][componenteSelecionado];
+        
+        escolas.forEach(escola => {
+            const option = document.createElement('option');
+            option.value = escola;
+            option.textContent = escola;
+            escolaSelect.appendChild(option);
+        });
+        
+        console.log(`📚 Escolas carregadas para ${anoSelecionado} - ${componenteSelecionado}:`, escolas.length);
+    } else {
+        // Se não houver filtros específicos, tentar carregar do YAML
+        if (yamlData && yamlData.length > 0) {
+            const todasEscolas = [...new Set(yamlData.flatMap(item => 
+                item.escolas ? item.escolas.map(e => e.escola) : []
+            ))];
+            
+            todasEscolas.forEach(escola => {
+                const option = document.createElement('option');
+                option.value = escola;
+                option.textContent = escola;
+                escolaSelect.appendChild(option);
+            });
+        }
+    }
 }
 
 // Função para aplicar filtros padrão (igual ao dashboard)
@@ -192,22 +302,27 @@ function setDefaultFilters() {
         }
     }
     
-    // Aplicar escola
-    const escolaSelect = document.getElementById('escola');
-    for (let option of escolaSelect.options) {
-        if (option.value === defaultValues.escola) {
-            option.selected = true;
-            filtersApplied++;
-            break;
-        }
-    }
-    
     // Aplicar faixa de performance
     const performanceSelect = document.getElementById('performance-range');
     performanceSelect.value = defaultValues.performance;
     filtersApplied++;
     
-    console.log(`📊 Filtros aplicados: ${filtersApplied}/6`);
+    // Atualizar escolas após aplicar filtros de ano e componente
+    setTimeout(() => {
+        updateEscolasFilter();
+        
+        // Aplicar escola padrão após carregar as opções
+        const escolaSelect = document.getElementById('escola');
+        for (let option of escolaSelect.options) {
+            if (option.value === defaultValues.escola) {
+                option.selected = true;
+                filtersApplied++;
+                break;
+            }
+        }
+        
+        console.log(`📊 Filtros aplicados: ${filtersApplied}/6`);
+    }, 100);
 }
 
 // Função para filtrar dados baseado nos filtros selecionados
@@ -398,8 +513,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Adicionar listeners aos filtros (mesmos IDs do dashboard)
     document.getElementById('avaliacao').addEventListener('change', updateAnalytics);
-    document.getElementById('ano-escolar').addEventListener('change', updateAnalytics);
-    document.getElementById('componente').addEventListener('change', updateAnalytics);
+    
+    // Listeners especiais para ano e componente que também atualizam escolas
+    document.getElementById('ano-escolar').addEventListener('change', function() {
+        updateEscolasFilter();
+        updateAnalytics();
+    });
+    
+    document.getElementById('componente').addEventListener('change', function() {
+        updateEscolasFilter();
+        updateAnalytics();
+    });
+    
     document.getElementById('rede').addEventListener('change', updateAnalytics);
     document.getElementById('escola').addEventListener('change', updateAnalytics);
     document.getElementById('performance-range').addEventListener('change', updateAnalytics);
