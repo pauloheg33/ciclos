@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0; url=dashboard.html">
+    <title>CICLOS Dashboard - Redirecionando...</title>
+    <link rel="canonical" href="dashboard.html">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        .redirect-message {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .loading {
+            margin: 1rem 0;
+            font-size: 2rem;
+        }
+        .spinner {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        a {
+            color: #fff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-message">
+        <div class="loading">
+            <span class="spinner">🔄</span>
+        </div>
+        <h1>Redirecionando para o Dashboard...</h1>
+        <p>Se não for redirecionado automaticamente, <a href="dashboard.html">clique aqui</a>.</p>
+    </div>
+
+    <script>
+        // Fallback para redirecionamento
+        setTimeout(function() {
+            window.location.href = 'dashboard.html';
+        }, 1000);
+    </script>
+</body>
+</html>
