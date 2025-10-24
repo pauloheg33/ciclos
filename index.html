@@ -3,60 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=dashboard.html">
-    <title>CICLOS Dashboard - Redirecionando...</title>
-    <link rel="canonical" href="dashboard.html">
+    <title>CICLOS Dashboard - Carregando...</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
             text-align: center;
         }
-        .redirect-message {
-            padding: 2rem;
+        .container {
             background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
             border-radius: 15px;
-            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .loading {
-            margin: 1rem 0;
-            font-size: 2rem;
+            max-width: 500px;
         }
         .spinner {
-            display: inline-block;
-            animation: spin 1s linear infinite;
+            font-size: 3rem;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
         }
         @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        a {
-            color: #fff;
-            text-decoration: underline;
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #45a049;
+        }
+        #countdown {
+            font-size: 1.2em;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-    <div class="redirect-message">
-        <div class="loading">
-            <span class="spinner">🔄</span>
+    <div class="container">
+        <div class="spinner">📊</div>
+        <h1>CICLOS Dashboard</h1>
+        <p>Plataforma de Análise Educacional</p>
+        
+        <div id="countdown">Redirecionando em <span id="timer">3</span> segundos...</div>
+        
+        <div>
+            <a href="dashboard.html" class="btn">📊 Dashboard Principal</a>
+            <br>
+            <a href="analise-nova.html" class="btn">📈 Análise dos Indicadores</a>
         </div>
-        <h1>Redirecionando para o Dashboard...</h1>
-        <p>Se não for redirecionado automaticamente, <a href="dashboard.html">clique aqui</a>.</p>
+        
+        <p style="margin-top: 30px; font-size: 0.9em; opacity: 0.8;">
+            <strong>Acesso Direto:</strong><br>
+            <a href="dashboard.html" style="color: #fff;">dashboard.html</a> | 
+            <a href="analise-nova.html" style="color: #fff;">analise-nova.html</a> | 
+            <a href="test.html" style="color: #fff;">test.html</a>
+        </p>
     </div>
 
     <script>
-        // Fallback para redirecionamento
+        console.log('✅ Index carregado com sucesso!');
+        console.log('URL:', window.location.href);
+        
+        let countdown = 3;
+        const timerElement = document.getElementById('timer');
+        
+        const interval = setInterval(function() {
+            countdown--;
+            timerElement.textContent = countdown;
+            
+            if (countdown <= 0) {
+                clearInterval(interval);
+                console.log('🔄 Redirecionando para dashboard...');
+                window.location.href = 'dashboard.html';
+            }
+        }, 1000);
+        
+        // Fallback para garantir redirecionamento
         setTimeout(function() {
             window.location.href = 'dashboard.html';
-        }, 1000);
+        }, 5000);
     </script>
 </body>
 </html>

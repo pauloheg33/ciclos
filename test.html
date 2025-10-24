@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - CICLOS Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .status {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 CICLOS Dashboard - Teste de Funcionamento</h1>
+        
+        <div class="status">
+            <h2>✅ GitHub Pages Funcionando!</h2>
+            <p>Se você está vendo esta página, o GitHub Pages está funcionando corretamente.</p>
+            <p><strong>Data/Hora:</strong> <span id="datetime"></span></p>
+        </div>
+        
+        <div class="status">
+            <h3>📊 Acesse o Dashboard:</h3>
+            <a href="dashboard.html" class="btn">Dashboard Principal</a>
+            <a href="analise-nova.html" class="btn">Análise dos Indicadores</a>
+        </div>
+        
+        <div class="status">
+            <h3>🔍 Informações Técnicas:</h3>
+            <p><strong>URL Atual:</strong> <span id="current-url"></span></p>
+            <p><strong>User Agent:</strong> <span id="user-agent"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar data/hora atual
+        document.getElementById('datetime').textContent = new Date().toLocaleString('pt-BR');
+        
+        // Mostrar URL atual
+        document.getElementById('current-url').textContent = window.location.href;
+        
+        // Mostrar User Agent
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+        
+        console.log('✅ Página de teste carregada com sucesso!');
+        console.log('URL:', window.location.href);
+        console.log('Timestamp:', new Date().toISOString());
+        
+        // Teste de redirecionamento automático após 10 segundos
+        setTimeout(function() {
+            console.log('🔄 Redirecionando para dashboard...');
+            window.location.href = 'dashboard.html';
+        }, 10000);
+    </script>
+</body>
+</html>
