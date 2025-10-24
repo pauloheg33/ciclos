@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard interativo para análise de dados educacionais do Ciclo III / 2025. Visualize percentuais de acerto por habilidade em escolas da rede pública.">
+    <meta name="keywords" content="educação, dashboard, análise educacional, aprendizagem, ciclos educacionais, rede pública">
+    <meta name="author" content="Paulo">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="CICLOS - Dashboard Educacional">
+    <meta property="og:description" content="Dashboard interativo para visualização e análise de dados educacionais com foco em percentuais de acerto por habilidade">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://pauloheg33.github.io/ciclos/assets/preview.png">
+    <meta property="og:url" content="https://pauloheg33.github.io/ciclos">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CICLOS - Dashboard Educacional">
+    <meta name="twitter:description" content="Dashboard interativo para análise de dados educacionais">
+    
+    <title>CICLOS - Dashboard Educacional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, 
+                rgba(76, 175, 80, 0.1) 0%,
+                rgba(33, 150, 243, 0.1) 50%,
+                rgba(156, 39, 176, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #4CAF50, #2196F3, #9C27B0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--success-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="title-section">
+                    <h1>📊 CICLOS - Dashboard Educacional</h1>
+                    <p class="subtitle">Análise Inteligente de Dados Educacionais</p>
+                </div>
+                <div class="status-indicator">
+                    <div class="auto-sync-indicator" title="Sistema online">
+                        <span class="sync-icon">🟢</span>
+                        <span class="sync-text">Online</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <h2 class="hero-title">📈 Transforme Dados em Conhecimento</h2>
+                <p class="hero-subtitle">
+                    Plataforma completa para visualização e análise de indicadores educacionais, 
+                    permitindo acompanhar o desempenho dos estudantes por habilidades, 
+                    escolas e redes de ensino em tempo real.
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="dashboard.html" class="btn btn-primary">
+                        <span>📊</span>
+                        Acessar Dashboard Principal
+                    </a>
+                    <a href="analise-nova.html" class="btn btn-secondary">
+                        <span>📈</span>
+                        Análise dos Indicadores
+                    </a>
+                </div>
+            </section>
+
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Ciclos Educacionais</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Habilidades Monitoradas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Monitoramento</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Real-time</div>
+                        <div class="stat-label">Atualizações</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Dashboard Interativo</h3>
+                    <p class="feature-description">
+                        Visualize dados educacionais com filtros dinâmicos por avaliação, 
+                        ano escolar, componente curricular e escola.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Análise por Habilidades</h3>
+                    <p class="feature-description">
+                        Acompanhe o percentual de acerto por habilidade específica, 
+                        identificando pontos fortes e oportunidades de melhoria.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏫</div>
+                    <h3 class="feature-title">Comparação entre Escolas</h3>
+                    <p class="feature-description">
+                        Compare o desempenho individual das escolas com a média geral 
+                        da rede educacional.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Indicadores Visuais</h3>
+                    <p class="feature-description">
+                        Sistema de cores intuitivo que categoriza o desempenho em 
+                        crítico, baixo, intermediário e adequado.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">Atualização Automática</h3>
+                    <p class="feature-description">
+                        Dados sincronizados automaticamente a cada 30 segundos, 
+                        garantindo informações sempre atualizadas.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Design Responsivo</h3>
+                    <p class="feature-description">
+                        Interface otimizada para desktop, tablet e dispositivos móveis, 
+                        com experiência consistente em todas as plataformas.
+                    </p>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <h3 style="color: var(--text-primary); margin-bottom: 1rem;">
+                    🚀 Comece a Analisar Agora
+                </h3>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Acesse nossas ferramentas de análise e transforme dados educacionais 
+                    em insights valiosos para a melhoria do ensino.
+                </p>
+                <div class="cta-buttons">
+                    <a href="dashboard.html" class="btn btn-primary">
+                        <span>🎯</span>
+                        Dashboard Principal
+                    </a>
+                    <a href="analise-nova.html" class="btn btn-secondary">
+                        <span>📊</span>
+                        Análise Avançada
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer style="text-align: center; padding: 2rem; margin-top: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                📚 Desenvolvido para apoiar a melhoria da qualidade educacional
+            </p>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                © 2025 CICLOS Dashboard - Paulo | 
+                <a href="https://github.com/pauloheg33/ciclos" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                    GitHub Repository
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Adiciona animação suave ao carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

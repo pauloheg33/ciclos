@@ -1,0 +1,45 @@
+{
+  "name": "ciclos-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard interativo para análise de dados educacionais",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 8080 -c-1",
+    "build": "npm run minify-css && npm run minify-js && npm run minify-html",
+    "minify-css": "cleancss -o styles.min.css styles.css",
+    "minify-js": "terser script.js -o script.min.js --compress --mangle && terser analytics.js -o analytics.min.js --compress --mangle",
+    "minify-html": "html-minifier --collapse-whitespace --remove-comments --minify-css --minify-js index.html -o index.min.html && html-minifier --collapse-whitespace --remove-comments --minify-css --minify-js dashboard.html -o dashboard.min.html && html-minifier --collapse-whitespace --remove-comments --minify-css --minify-js analise-nova.html -o analise-nova.min.html",
+    "dev": "http-server -p 3000 -o",
+    "preview": "http-server dist/ -p 8080 -o",
+    "clean": "rm -rf dist/ optimized/ *.min.*"
+  },
+  "keywords": [
+    "dashboard",
+    "educação",
+    "análise-dados",
+    "github-pages",
+    "javascript",
+    "yaml"
+  ],
+  "author": "Paulo",
+  "license": "MIT",
+  "homepage": "https://pauloheg33.github.io/ciclos",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pauloheg33/ciclos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pauloheg33/ciclos/issues"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.2",
+    "html-minifier": "^4.0.0",
+    "http-server": "^14.1.1",
+    "terser": "^5.24.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

@@ -1329,4 +1329,78 @@ body {
     .skill-percentage {
         font-size: 1.2em;
     }
+    
+    /* Analytics page mobile improvements */
+    .analytics-container {
+        padding: 10px;
+        gap: 15px;
+    }
+    
+    .top-filters {
+        padding: 15px 10px;
+    }
+    
+    .filter-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .cycles-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .cycle-card {
+        padding: 15px;
+    }
+    
+    .cycle-card h2 {
+        font-size: 1.2em;
+    }
+    
+    .percentage-large {
+        font-size: 2.5em;
+    }
+    
+    .legend-list {
+        gap: 8px;
+    }
+    
+    .sync-status {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 15px;
+        align-self: center;
+    }
+}
+
+/* Additional responsive improvements for analytics */
+@media (max-width: 1024px) {
+    .analytics-container {
+        padding: 15px;
+    }
+    
+    .cycles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .top-filters {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cycles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-row {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .cycle-main {
+        padding: 20px 15px;
+    }
 }

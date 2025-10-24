@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard interativo para visualização de percentuais de acerto por habilidade na Avaliação Contínua da Aprendizagem - Ciclo III / 2025">
+    <meta name="keywords" content="dashboard educacional, avaliação aprendizagem, percentual acerto, habilidades, ciclo III, educação, análise dados">
+    <meta name="author" content="Paulo">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Dashboard - Avaliação Contínua da Aprendizagem">
+    <meta property="og:description" content="Dashboard interativo para análise de percentuais de acerto por habilidade - Ciclo III / 2025">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://pauloheg33.github.io/ciclos/assets/dashboard-preview.png">
+    <meta property="og:url" content="https://pauloheg33.github.io/ciclos/dashboard.html">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dashboard - Avaliação Contínua da Aprendizagem">
+    <meta name="twitter:description" content="Análise interativa de dados educacionais por habilidades">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pauloheg33.github.io/ciclos/dashboard.html">
+    
     <title>Dashboard - Avaliação Contínua da Aprendizagem</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -16,8 +37,8 @@
                     <p class="subtitle">Avaliação Contínua da Aprendizagem - Ciclo III / 2025</p>
                 </div>
                 <div class="status-indicator">
-                    <button class="new-page-btn" onclick="window.location.href='analise-nova.html'" title="Acessar Análise dos Indicadores">
-                        <span class="btn-icon">📊</span>
+                    <button class="new-page-btn" onclick="window.location.href='analise-nova.html'" title="Acessar Análise dos Indicadores" aria-label="Navegar para página de análise dos indicadores">
+                        <span class="btn-icon" aria-hidden="true">📊</span>
                         <span class="btn-text">Análise dos Indicadores</span>
                     </button>
                     <div class="auto-sync-indicator" title="Sincronização automática ativada">
@@ -117,6 +138,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
